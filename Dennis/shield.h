@@ -34,8 +34,7 @@ AudioConnection          patchCord5(freeverb1, 0, mixer1, 0);
 AudioConnection          patchCord6(chorus1, 0, mixer1, 1);
 AudioConnection          patchCord7(waveshape1, 0, mixer1, 2);
 AudioConnection          patchCord8(delay1, 0, mixer1, 3);
-AudioConnection          patchCord9(mixer1, biquad1);
-AudioConnection          patchCord10(biquad1, 0, i2s1, 0);
+AudioConnection          patchCord9(mixer1, i2s1);
 
 
 
