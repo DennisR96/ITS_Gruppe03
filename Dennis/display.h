@@ -33,6 +33,7 @@ class Menu {
         }
 };
 
+Menu Display;
 
 
 
