@@ -16,8 +16,20 @@ class Menu {
             tft.fillScreen(ILI9341_WHITE);              
             tft.setRotation(3);
             tft.setTextSize(3);
-            tft.setCursor(108, 12);
-            tft.print("Test");
+            tft.setTextColor(ILI9341_BLACK);
+            tft.setCursor(100, 100);
+            tft.print("Audio FX");
+            delay(1000);
+            tft.fillScreen(ILI9341_BLACK);              
+            tft.setRotation(3);
+            tft.setTextSize(3);
+            tft.setTextColor(ILI9341_WHITE);
+            tft.setCursor(75, 140);
+            tft.print("David Yaman");
+            tft.setCursor(145, 110);
+            tft.print(" & ");
+            tft.setCursor(75, 80);
+            tft.print("Dennis Raek");
             delay(1000);
         }
         void clear(){
@@ -30,6 +42,35 @@ class Menu {
             tft.drawRect(150, 0, 90, 107, ILI9341_WHITE);
             tft.drawRect(150, 106, 90, 107, ILI9341_WHITE);
             tft.drawRect(150, 212, 90, 108, ILI9341_WHITE);
+            tft.setRotation(3);
+            tft.setTextColor(ILI9341_BLACK); 
+            tft.setCursor(100, 20);
+            tft.print("Audio FX");
+        }
+        void fx_reverb(){
+            tft.setRotation(3);
+            tft.setTextColor(ILI9341_WHITE); 
+            tft.setCursor(120, 90);
+            tft.print("Reverb");
+        }
+        void fx_distortion(){
+            tft.setRotation(3);
+            tft.setTextColor(ILI9341_WHITE); 
+            tft.setCursor(90, 90);
+            tft.print("Distortion");
+        }
+        void fx_chrous(){
+            tft.setRotation(3);
+            tft.setTextColor(ILI9341_WHITE); 
+            tft.setCursor(110, 90);
+            tft.print("Chrous");
+        }
+          
+          void fx_delay(){
+            tft.setRotation(3);
+            tft.setTextColor(ILI9341_WHITE); 
+            tft.setCursor(110, 90);
+            tft.print("Delay");
         }
 };
 
