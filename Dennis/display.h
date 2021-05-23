@@ -46,18 +46,11 @@ class Menu {
             tft.setTextColor(ILI9341_BLACK); 
             tft.setCursor(100, 20);
             tft.print("Audio FX");
-        }
-        void fx_reverb(){
-            tft.setRotation(3);
             tft.setTextColor(ILI9341_WHITE); 
-            tft.setCursor(120, 90);
-            tft.print("Reverb");
-        }
-        void fx_distortion(){
-            tft.setRotation(3);
-            tft.setTextColor(ILI9341_WHITE); 
-            tft.setCursor(90, 90);
-            tft.print("Distortion");
+            tft.setCursor(120, 160);
+            tft.setTextSize(2);
+            tft.print("Dry/Wet");
+            tft.setTextSize(3);
         }
         void fx_chrous(){
             tft.setRotation(3);
@@ -65,13 +58,38 @@ class Menu {
             tft.setCursor(110, 90);
             tft.print("Chrous");
         }
-          
-          void fx_delay(){
+        
+        void fx_delay(){
             tft.setRotation(3);
             tft.setTextColor(ILI9341_WHITE); 
             tft.setCursor(110, 90);
             tft.print("Delay");
         }
+
+        void fx_distortion(){
+            tft.setRotation(3);
+            tft.setTextColor(ILI9341_WHITE); 
+            tft.setCursor(90, 90);
+            tft.print("Distortion");
+        }
+
+        void fx_reverb(){
+            tft.setRotation(3);
+            tft.setTextColor(ILI9341_WHITE); 
+            tft.setCursor(120, 90);
+            tft.print("Reverb");
+            tft.setTextSize(2);
+            tft.setCursor(13, 160);
+            tft.print("Damping");
+            tft.setCursor(245, 160);
+            tft.print("Room");
+            tft.setCursor(245, 180);
+            tft.print("Size");
+        }
+       
+        
+          
+        
 };
 
 Menu Display;
