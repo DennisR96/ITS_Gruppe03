@@ -9,8 +9,7 @@ void setup() {
 
     // Encoder
     encoder_init();
-   
-
+  
     // Display
     Display.start();                                    // Display Start
     Display.clear();                                    // Display Clear
