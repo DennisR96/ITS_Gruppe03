@@ -22,15 +22,14 @@ Encoder EncoderA(DT_A,CLK_A);
 
 // Var
 long oldPosition  = -999;
-int mod = 0;
 
-int scan_Encode(){
+
+int scan_Encode(int mod_neu){
     // Encode Scanner Funktion (Bitte Loopen)
     long newPosition = EncoderA.read();
   if (newPosition != oldPosition) {
     oldPosition = newPosition;
-    mod = newPosition % 4;
-    Serial.println(mod);
+    mod_neu = abs(newPosition) % 4;
   }
-  return mod;
+  return mod_neu;
 }
