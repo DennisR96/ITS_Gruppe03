@@ -1,6 +1,7 @@
 #include "SPI.h"
 #include "ILI9341_t3.h"
 #include "font_Arial.h"
+
 #define TFT_DC       9
 #define TFT_CS      10
 #define TFT_RST    255
@@ -56,7 +57,7 @@ class Menu {
             tft.setRotation(3);
             tft.setTextColor(ILI9341_WHITE); 
             tft.setCursor(110, 90);
-            tft.print("Chrous");
+            tft.print("Chorus");
         }
         
         void fx_delay(){
@@ -85,6 +86,32 @@ class Menu {
             tft.print("Room");
             tft.setCursor(245, 180);
             tft.print("Size");
+        }
+
+        int update(int mod_neu, int mod_alt){
+            if (mod_neu == mod_alt){
+                return mod_neu;
+            }
+            switch (mod_neu){
+                case 0:
+                    Serial.print(mod_neu);
+                    Serial.println(" Chorus");
+                    break;
+                case 1:
+                    Serial.print(mod_neu);
+                    Serial.println(" Delay");
+                    break;
+                case 2:
+                    Serial.print(mod_neu);
+                    Serial.println(" Distortion");
+                    break;
+                case 3:
+                    Serial.print(mod_neu);
+                    Serial.println(" Reverb");
+                    break;
+            }
+            mod_alt = mod_neu;
+            return mod_alt;
         }
        
         
