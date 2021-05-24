@@ -29,7 +29,7 @@ int scan_Encode(){
     long newPosition = EncoderA.read();
   if (newPosition != oldPosition) {
     oldPosition = newPosition;
-    mod = newPosition % 7;
+    mod = newPosition % 4;
     Serial.println(mod);
   }
   return mod;
