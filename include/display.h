@@ -114,10 +114,6 @@ class Menu {
             mod_alt = mod_neu;
             return mod_alt;
         }
-       
-        
-          
-        
 };
 
 Menu Display;
