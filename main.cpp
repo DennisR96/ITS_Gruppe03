@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <display.h>
 #include <shield.h>
+#include <encoding.h>
 
 
 void setup() {
@@ -25,7 +26,11 @@ void setup() {
 
     }
 
+int mod_alt = 0;
+int mod_neu = 0;
+
 void loop() {
   // put your main code here, to run repeatedly:
-  Serial.println("Test2");
+  mod_neu = scan_Encode(mod_neu);
+  mod_alt = Display.update(mod_neu, mod_alt);
 }
