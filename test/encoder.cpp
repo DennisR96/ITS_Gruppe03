@@ -3,6 +3,7 @@
 //
 // Copyright John Main - best-microcontroller-projects.com
 //
+// Git Sync Test
 #define CLK 30
 #define DATA 31
 
