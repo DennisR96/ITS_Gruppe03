@@ -51,9 +51,9 @@ class KY_040{
 };
 
 KY_040 Encoder_Menu;
-KY_040 EncoderB;
-KY_040 EncoderC;
-KY_040 EncoderD;
+KY_040 Encoder_p1;
+KY_040 Encoder_p2;
+KY_040 Encoder_p3;
 
 void encoder_init(){
    // Encoder Menu
@@ -63,22 +63,22 @@ void encoder_init(){
    Encoder_Menu.read_rotary();
 
    // EncoderB
-   EncoderB.CLK = 23;
-   EncoderB.DATA = 24;
-   EncoderB.encoder_start();
-   EncoderB.read_rotary();
+   Encoder_p1.CLK = 23;
+   Encoder_p1.DATA = 24;
+   Encoder_p1.encoder_start();
+   Encoder_p1.read_rotary();
 
    // EncoderC
-   EncoderC.CLK = 12;
-   EncoderC.DATA = 13;
-   EncoderC.encoder_start();
-   EncoderC.read_rotary();
+   Encoder_p2.CLK = 12;
+   Encoder_p2.DATA = 13;
+   Encoder_p2.encoder_start();
+   Encoder_p2.read_rotary();
 
    //EncoderD
-   EncoderD.CLK = 12;
-   EncoderD.DATA = 13;
-   EncoderD.encoder_start();
-   EncoderD.read_rotary();
+   Encoder_p3.CLK = 12;
+   Encoder_p3.DATA = 13;
+   Encoder_p3.encoder_start();
+   Encoder_p3.read_rotary();
 }
 
 int Encoder_Menu_mod_old = 0;

@@ -3,9 +3,6 @@
 #include <encoding.h>
 #include <shield.h>
 
-// Hier Github update
-
-
 void setup() {
     Serial.begin(115200);
 
