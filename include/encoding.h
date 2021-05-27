@@ -2,6 +2,8 @@ class KY_040{
    public: 
    int CLK;
    int DATA;
+   int mod;
+   int mod_temp;
 
    uint8_t prevNextCode = 0;
    uint16_t store=0;
@@ -42,21 +44,23 @@ class KY_040{
          Serial.print(mod_neu);
          Serial.print(" ");
       }
+      mod_temp = mod;
+      mod = mod_neu;
       return mod_neu;
    }
 };
 
-KY_040 EncoderA;
+KY_040 Encoder_Menu;
 KY_040 EncoderB;
 KY_040 EncoderC;
 KY_040 EncoderD;
 
 void encoder_init(){
-   // EncoderA
-   EncoderA.CLK = 30;
-   EncoderA.DATA = 31;
-   EncoderA.encoder_start();
-   EncoderA.read_rotary();
+   // Encoder Menu
+   Encoder_Menu.CLK = 30;
+   Encoder_Menu.DATA = 31;
+   Encoder_Menu.encoder_start();
+   Encoder_Menu.read_rotary();
 
    // EncoderB
    EncoderB.CLK = 23;
@@ -77,8 +81,8 @@ void encoder_init(){
    EncoderD.read_rotary();
 }
 
-int EncoderA_mod_old = 0;
-int EncoderA_mod_new = 0;
+int Encoder_Menu_mod_old = 0;
+int Encoder_Menu_mod_new = 0;
 
 int EncoderB_mod_old = 0;
 int EncoderB_mod_new = 0;
@@ -91,6 +95,6 @@ int EncoderD_mod_new = 0;
 
 void encoder_update(){
    // Encoder A
-   EncoderA_mod_new = EncoderA.encoder_update(EncoderA_mod_new);
-   EncoderA_mod_old = Display.update(EncoderA_mod_new,EncoderA_mod_old);
+   Encoder_Menu_mod_new = Encoder_Menu.encoder_update(Encoder_Menu_mod_new);
+   Encoder_Menu_mod_old = Display.update(Encoder_Menu_mod_new,Encoder_Menu_mod_old);
 }
