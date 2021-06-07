@@ -1,100 +1,106 @@
-class KY_040{
-   public: 
-   int CLK;
-   int DATA;
-   int mod;
-   int mod_temp;
+#include <iostream>
+#include <Bounce.h>
 
-   uint8_t prevNextCode = 0;
-   uint16_t store=0;
+int CLK[4] = {30, 33, 36, 39};
+int DATA[4] = {31, 34, 37, 40};
+int SW[4] = {32, 35, 38, 41};
+
+uint8_t prevNextCode[4] = {0, 0, 0, 0};
+uint16_t store[4] = {0, 0, 0, 0};
+
+Bounce button0 = Bounce(SW[0], 15);
+Bounce button1 = Bounce(SW[1], 15);
+Bounce button2 = Bounce(SW[2], 15);
+Bounce button3 = Bounce(SW[3], 15);
+
+static int8_t c[4] = {0, 0, 0, 0};
+static int8_t d[4] = {0, 0, 0, 0};
+static int8_t e[4] = {0, 0, 0, 0};
+static int8_t val[4] = {0, 0, 0, 0};
+
+// static int8_t c_0, val_0;
+// static int8_t c_1, val_1;
+// static int8_t c_2, val_2;
+// static int8_t c_3, val_3;
+
+void encoder_start(){
+    pinMode(CLK[0],INPUT_PULLUP);
+    pinMode(CLK[1],INPUT_PULLUP);
+    pinMode(CLK[2],INPUT_PULLUP);
+    pinMode(CLK[3],INPUT_PULLUP);
+
+    pinMode(DATA[0],INPUT_PULLUP);
+    pinMode(DATA[1],INPUT_PULLUP);
+    pinMode(DATA[2],INPUT_PULLUP);
+    pinMode(DATA[3],INPUT_PULLUP);
+
+    pinMode(SW[0],INPUT_PULLUP);
+    pinMode(SW[1],INPUT_PULLUP);
+    pinMode(SW[2],INPUT_PULLUP);
+    pinMode(SW[3],INPUT_PULLUP);
+}
+
+int8_t encoder_init(uint16_t &store, uint8_t &prevNextCode,int CLK, int DATA){
+    static int8_t rot_enc_table[] = {0,1,1,0,1,0,0,1,1,0,0,1,0,1,1,0};
+    prevNextCode <<= 2;
+    if (digitalRead(DATA)) prevNextCode |= 0x02;
+    if (digitalRead(CLK)) prevNextCode |= 0x01;
+    prevNextCode &= 0x0f;
+
+    if  (rot_enc_table[prevNextCode] ) {
+    store <<= 4;
+    store |= prevNextCode;
+    
+    if ((store&0xff)==0x2b) return -1;
+    if ((store&0xff)==0x17) return 1;
+    }
    
-   void encoder_start(){
-      pinMode(CLK, INPUT);
-      pinMode(CLK, INPUT);
-      pinMode(CLK, INPUT_PULLUP);
-      pinMode(DATA, INPUT);
-      pinMode(DATA, INPUT_PULLUP);
+   return 0;
    }
 
-   int8_t read_rotary() {
-   static int8_t rot_enc_table[] = {0,1,1,0,1,0,0,1,1,0,0,1,0,1,1,0};
+int8_t encoder_update(){
+    if ( val[0]=encoder_init(store[0], prevNextCode[0], CLK[0], DATA[0]) ) {
+        c[0] +=val[0];
+        c[0] = abs(c[0] % 4);
+        Serial.print("E0: ");
+        Serial.print(c[0]);
+        Serial.println("");
+    }
 
-   prevNextCode <<= 2;
-   if (digitalRead(DATA)) prevNextCode |= 0x02;
-   if (digitalRead(CLK)) prevNextCode |= 0x01;
-   prevNextCode &= 0x0f;
+    if(val[1]=encoder_init(store[1], prevNextCode[1], CLK[1], DATA[1])) {
+        c[1] +=val[1];
+        c[1] = abs(c[1] % 101);
+        Serial.print("E1: ");
+        Serial.print(c[1]);
+        Serial.println("");
+        
+    }
 
-      // If valid then store as 16 bit data.
-      if  (rot_enc_table[prevNextCode] ) {
-         store <<= 4;
-         store |= prevNextCode;
-         //if (store==0xd42b) return 1;
-         //if (store==0xe817) return -1;
-         if ((store&0xff)==0x2b) return -1;
-         if ((store&0xff)==0x17) return 1;
-      }
-      return 0;
+    if(val[2]=encoder_init(store[2], prevNextCode[2], CLK[2], DATA[2])) {
+        c[2] +=val[2];
+        c[2] = abs(c[2] % 101);
+        Serial.print("E2: ");
+        Serial.print(c[2]);
+        Serial.println("");
+    }
+
+    if(val[3]=encoder_init(store[3], prevNextCode[3], CLK[3], DATA[3])) {
+        c[3] +=val[3];
+        c[3] = c[3] % 101;
+        Serial.print("E3: ");
+        Serial.print(c[3]);
+        Serial.println("");
+    }
+
+    button0.update();
+    button1.update();
+    button2.update();
+    button3.update();
+
+    if (button0.fallingEdge()) Serial.println("SW0: Gedrückt");
+    if (button1.fallingEdge()) Serial.println("SW1: Gedrückt");
+    if (button2.fallingEdge()) Serial.println("SW2: Gedrückt");
+    if (button3.fallingEdge()) Serial.println("SW3: Gedrückt");
+    
+    return 0;
    }
-
-   int encoder_update(int mod_neu) {
-   static int8_t c,val;
-      if( val=read_rotary()) {
-         c +=val;
-         mod_neu = abs(c) % 4;
-         Serial.print(mod_neu);
-         Serial.print(" ");
-      }
-      mod_temp = mod;
-      mod = mod_neu;
-      return mod_neu;
-   }
-};
-
-KY_040 Encoder_Menu;
-KY_040 Encoder_p1;
-KY_040 Encoder_p2;
-KY_040 Encoder_p3;
-
-void encoder_init(){
-   // Encoder Menu
-   Encoder_Menu.CLK = 30;
-   Encoder_Menu.DATA = 31;
-   Encoder_Menu.encoder_start();
-   Encoder_Menu.read_rotary();
-
-   // EncoderB
-   Encoder_p1.CLK = 23;
-   Encoder_p1.DATA = 24;
-   Encoder_p1.encoder_start();
-   Encoder_p1.read_rotary();
-
-   // EncoderC
-   Encoder_p2.CLK = 12;
-   Encoder_p2.DATA = 13;
-   Encoder_p2.encoder_start();
-   Encoder_p2.read_rotary();
-
-   //EncoderD
-   Encoder_p3.CLK = 12;
-   Encoder_p3.DATA = 13;
-   Encoder_p3.encoder_start();
-   Encoder_p3.read_rotary();
-}
-
-int Encoder_Menu_mod_old = 0;
-int Encoder_Menu_mod_new = 0;
-
-int EncoderB_mod_old = 0;
-int EncoderB_mod_new = 0;
-
-int EncoderC_mod_old = 0;
-int EncoderC_mod_new = 0;
-
-int EncoderD_mod_old = 0;
-int EncoderD_mod_new = 0;
-
-void encoder_update(){
-   // Encoder A
-   Encoder_Menu_mod_new = Encoder_Menu.encoder_update(Encoder_Menu_mod_new);
-   Encoder_Menu_mod_old = Display.update(Encoder_Menu_mod_new,Encoder_Menu_mod_old);
-}

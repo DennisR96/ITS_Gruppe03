@@ -88,31 +88,30 @@ class Menu {
             tft.print("Size");
         }
 
-        int update(int mod_neu, int mod_alt){
-            if (mod_neu == mod_alt){
-                return mod_neu;
+        int update(){
+            if (c[0] == d[0]){
+                return 0;
             }
-            switch (mod_neu){
+            switch (c[0]){
                 case 0:
                     fx_chrous();
-                    Serial.print(mod_neu);
+                    Serial.print(e[0]);
                     Serial.println(" Chorus");
                     break;
                 case 1:
-                    Serial.print(mod_neu);
+                    Serial.print(e[0]);
                     Serial.println(" Delay");
                     break;
                 case 2:
-                    Serial.print(mod_neu);
+                    Serial.print(e[0]);
                     Serial.println(" Distortion");
                     break;
                 case 3:
-                    Serial.print(mod_neu);
+                    Serial.print(e[0]);
                     Serial.println(" Reverb");
                     break;
             }
-            mod_alt = mod_neu;
-            return mod_alt;
+                return 0;
         }
 };
 
