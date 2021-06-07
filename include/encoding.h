@@ -61,7 +61,7 @@ int8_t encoder_init(uint16_t &store, uint8_t &prevNextCode,int CLK, int DATA){
 int8_t encoder_update(){
     if ( val[0]=encoder_init(store[0], prevNextCode[0], CLK[0], DATA[0]) ) {
         c[0] +=val[0];
-        c[0] = abs(c[0] % 4);
+        c[0] = c[0] % 4;
         Serial.print("E0: ");
         Serial.print(c[0]);
         Serial.println("");
@@ -69,7 +69,7 @@ int8_t encoder_update(){
 
     if(val[1]=encoder_init(store[1], prevNextCode[1], CLK[1], DATA[1])) {
         c[1] +=val[1];
-        c[1] = abs(c[1] % 101);
+        c[1] = c[1] % 101;
         Serial.print("E1: ");
         Serial.print(c[1]);
         Serial.println("");
@@ -78,7 +78,7 @@ int8_t encoder_update(){
 
     if(val[2]=encoder_init(store[2], prevNextCode[2], CLK[2], DATA[2])) {
         c[2] +=val[2];
-        c[2] = abs(c[2] % 101);
+        c[2] = c[2] % 101;
         Serial.print("E2: ");
         Serial.print(c[2]);
         Serial.println("");

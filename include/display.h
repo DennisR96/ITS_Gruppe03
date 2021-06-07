@@ -88,31 +88,9 @@ class Menu {
             tft.print("Size");
         }
 
-        int update(){
-            if (c[0] == d[0]){
-                return 0;
-            }
-            switch (c[0]){
-                case 0:
-                    fx_chrous();
-                    Serial.print(e[0]);
-                    Serial.println(" Chorus");
-                    break;
-                case 1:
-                    Serial.print(e[0]);
-                    Serial.println(" Delay");
-                    break;
-                case 2:
-                    Serial.print(e[0]);
-                    Serial.println(" Distortion");
-                    break;
-                case 3:
-                    Serial.print(e[0]);
-                    Serial.println(" Reverb");
-                    break;
-            }
-                return 0;
-        }
+        
+
+
 };
 
 Menu Display;
