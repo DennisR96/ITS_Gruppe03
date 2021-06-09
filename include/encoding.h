@@ -1,5 +1,5 @@
-int CLK[4] = {30, 33, 36, 39};
-int DATA[4] = {31, 34, 37, 40};
+int CLK[4] = {30, 34, 37, 40};
+int DATA[4] = {31, 33, 36, 39};
 int SW[4] = {32, 35, 38, 41};
 
 uint8_t prevNextCode[4] = {0, 0, 0, 0};
@@ -50,10 +50,8 @@ int8_t encoder_init(uint16_t &store, uint8_t &prevNextCode,int CLK, int DATA){
 
 int8_t encoder_update(){
     if (val[0]=encoder_init(store[0], prevNextCode[0], CLK[0], DATA[0]) ) {
+        update_menu(val[0]);
         c[0] +=val[0];
-        con_var[0] = c[0];
-        
-        update_menu();
         }
 
     if(val[1]=encoder_init(store[1], prevNextCode[1], CLK[1], DATA[1])) {
