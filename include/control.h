@@ -1,77 +1,52 @@
-int menu(){
-            if (c[0] == d[0]){
-                return 0;
-            }
+int con_var[4] = {0, 0, 0, 0};
 
-            switch (c[0]){
-                case 0:
-                    Display.fx_chrous();
-                    Serial.print(e[0]);
-                    Serial.println(" Chorus");
-                    break;
-                case 1:
-                    Display.fx_delay();
-                    Serial.print(e[0]);
-                    Serial.println(" Delay");
-                    break;
-                case 2:
-                    Display.fx_distortion();
-                    Serial.print(e[0]);
-                    Serial.println(" Distortion");
-                    break;
-                case 3:
-                    Display.fx_reverb();
-                    Serial.print(e[0]);
-                    Serial.println(" Reverb");
-                    break;
-            }
-                return 0;
+void update_menu(){
+    switch(con_var[0]){
+        case 0:
+            Serial.print(con_var[0]);
+            Serial.println("Chorus");
+            break;
+        case 1:
+            Serial.print(con_var[0]);
+            Serial.println("Hall");
+            break;
+        case 2:
+            Serial.print(con_var[0]);
+            Serial.println("Reverb");
+            break;
+        case 3:
+            Serial.print(con_var[0]);
+            Serial.println("Delay");
+            break;
+    }
 }
 
-int p0(){
-        if (c[1] == d[1]){
-                return 0;
-            }
-
-        switch (c[1]){
-                case 0:
-                    Display.fx_chrous();
-                    Serial.print(c[1]);
-                    Serial.println(" Chorus");
-                    break;
-                case 1:
-                    Display.fx_delay();
-                    Serial.print(c[1]);
-                    Serial.println(" Delay");
-                    break;
-                case 2:
-                    Display.fx_distortion();
-                    Serial.print(c[1]);
-                    Serial.println(" Distortion");
-                    break;
-                case 3:
-                    Display.fx_reverb();
-                    Serial.print(c[1]);
-                    Serial.println(" Reverb");
-                    break;
-            }
-                return 0;
+void update_p1(){
+    switch(con_var[0]){
+        case 0:
+            Serial.println("P1 (Chorus:)");
+            Serial.println(con_var[1]);
+            break;
+        case 1:
+            Serial.println("P1 (Distortion): ");
+            Serial.println(con_var[1]);
+            break;
+        case 2:
+            Serial.println("P1 (Reverb)");
+            Serial.println(con_var[1]);
+            break;
+        case 3:
+            Serial.println("P2 (Delay)");
+            Serial.println(con_var[1]);
+            break;
+    }
+    
 }
 
-
-int p1(){
-    return 0;
-
+void update_p2(){
+    Serial.println(con_var[2]);
 }
 
-int p2(){
-    return 0;
-
-}
-
-
-void control_update(){
-    menu();
-    p1();
-    p2();
+void update_p3(){
+    Serial.println(con_var[3]);
 }

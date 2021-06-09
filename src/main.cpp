@@ -1,8 +1,8 @@
 #include <Arduino.h>
-#include "encoding.h"
 #include <Bounce.h>
-#include "display.h"
 #include "control.h"
+#include "encoding.h"
+#include "display.h"
 
 
 //#include <shield.h>
@@ -37,6 +37,5 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   encoder_update();
-  control_update();
   
 }

@@ -1,6 +1,3 @@
-#include <iostream>
-#include <Bounce.h>
-
 int CLK[4] = {30, 33, 36, 39};
 int DATA[4] = {31, 34, 37, 40};
 int SW[4] = {32, 35, 38, 41};
@@ -14,14 +11,7 @@ Bounce button2 = Bounce(SW[2], 15);
 Bounce button3 = Bounce(SW[3], 15);
 
 static int8_t c[4] = {0, 0, 0, 0};
-static int8_t d[4] = {0, 0, 0, 0};
-static int8_t e[4] = {0, 0, 0, 0};
 static int8_t val[4] = {0, 0, 0, 0};
-
-// static int8_t c_0, val_0;
-// static int8_t c_1, val_1;
-// static int8_t c_2, val_2;
-// static int8_t c_3, val_3;
 
 void encoder_start(){
     pinMode(CLK[0],INPUT_PULLUP);
@@ -59,37 +49,40 @@ int8_t encoder_init(uint16_t &store, uint8_t &prevNextCode,int CLK, int DATA){
    }
 
 int8_t encoder_update(){
-    if ( val[0]=encoder_init(store[0], prevNextCode[0], CLK[0], DATA[0]) ) {
+    if (val[0]=encoder_init(store[0], prevNextCode[0], CLK[0], DATA[0]) ) {
         c[0] +=val[0];
-        c[0] = c[0] % 4;
-        Serial.print("E0: ");
-        Serial.print(c[0]);
-        Serial.println("");
-    }
+        con_var[0] = c[0];
+        
+        update_menu();
+        }
 
     if(val[1]=encoder_init(store[1], prevNextCode[1], CLK[1], DATA[1])) {
-        c[1] +=val[1];
-        c[1] = c[1] % 101;
-        Serial.print("E1: ");
-        Serial.print(c[1]);
-        Serial.println("");
+        c[1] +=val[1]; 
         
+        c[1] = (c[1] > 100) ? 100 : c[1];
+        c[1] = (c[1] < 0) ? 0 : c[1];
+        
+        con_var[1] = c[1];
+        
+        update_p1(); 
     }
 
     if(val[2]=encoder_init(store[2], prevNextCode[2], CLK[2], DATA[2])) {
         c[2] +=val[2];
-        c[2] = c[2] % 101;
-        Serial.print("E2: ");
-        Serial.print(c[2]);
-        Serial.println("");
+
+        c[2] = (c[2] > 100) ? 100 : c[2];
+        c[2] = (c[2] < 0) ? 0 : c[2];
+
+        update_p2();
     }
 
     if(val[3]=encoder_init(store[3], prevNextCode[3], CLK[3], DATA[3])) {
         c[3] +=val[3];
-        c[3] = c[3] % 101;
-        Serial.print("E3: ");
-        Serial.print(c[3]);
-        Serial.println("");
+
+        c[3] = (c[3] > 100) ? 100 : c[3];
+        c[3] = (c[3] < 0) ? 0 : c[3];
+        
+        update_p3();
     }
 
     button0.update();
@@ -97,10 +90,17 @@ int8_t encoder_update(){
     button2.update();
     button3.update();
 
-    if (button0.fallingEdge()) Serial.println("SW0: Gedrückt");
-    if (button1.fallingEdge()) Serial.println("SW1: Gedrückt");
-    if (button2.fallingEdge()) Serial.println("SW2: Gedrückt");
-    if (button3.fallingEdge()) Serial.println("SW3: Gedrückt");
-    
+    if (button0.fallingEdge()) {
+        Serial.println("SW0: Gedrückt");
+    } 
+    if (button1.fallingEdge()) {
+        Serial.println("SW1: Gedrückt");
+    } 
+    if (button2.fallingEdge()) {
+        Serial.println("SW2: Gedrückt");
+    } 
+    if (button3.fallingEdge()) {
+        Serial.println("SW3: Gedrückt");
+    } 
     return 0;
    }
