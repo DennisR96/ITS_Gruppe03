@@ -3,6 +3,7 @@
 #include "control.h"
 #include "encoding.h"
 #include "display.h"
+#include "shield.h"
 
 
 //#include <shield.h>

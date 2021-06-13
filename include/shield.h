@@ -5,7 +5,7 @@
 #include <SerialFlash.h>
 
 //USB
-AudioInputUSB            usb1;           //xy=316,164
+AudioInputI2S            usb1;           //xy=316,164
 
 //Effekte
 AudioEffectChorus        chorus2;        //xy=545.7142791748047,76.28569412231445

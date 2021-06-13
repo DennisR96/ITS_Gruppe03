@@ -10,7 +10,6 @@ Bounce button1 = Bounce(SW[1], 15);
 Bounce button2 = Bounce(SW[2], 15);
 Bounce button3 = Bounce(SW[3], 15);
 
-static int8_t c[4] = {0, 0, 0, 0};
 static int8_t val[4] = {0, 0, 0, 0};
 
 void encoder_start(){
@@ -51,36 +50,18 @@ int8_t encoder_init(uint16_t &store, uint8_t &prevNextCode,int CLK, int DATA){
 int8_t encoder_update(){
     if (val[0]=encoder_init(store[0], prevNextCode[0], CLK[0], DATA[0]) ) {
         update_menu(val[0]);
-        c[0] +=val[0];
         }
 
     if(val[1]=encoder_init(store[1], prevNextCode[1], CLK[1], DATA[1])) {
-        c[1] +=val[1]; 
-        
-        c[1] = (c[1] > 100) ? 100 : c[1];
-        c[1] = (c[1] < 0) ? 0 : c[1];
-        
-        con_var[1] = c[1];
-        
-        update_p1(); 
+        update_p1(val[1]);
     }
 
     if(val[2]=encoder_init(store[2], prevNextCode[2], CLK[2], DATA[2])) {
-        c[2] +=val[2];
-
-        c[2] = (c[2] > 100) ? 100 : c[2];
-        c[2] = (c[2] < 0) ? 0 : c[2];
-
-        update_p2();
+         update_p2(val[2]);
     }
 
     if(val[3]=encoder_init(store[3], prevNextCode[3], CLK[3], DATA[3])) {
-        c[3] +=val[3];
-
-        c[3] = (c[3] > 100) ? 100 : c[3];
-        c[3] = (c[3] < 0) ? 0 : c[3];
-        
-        update_p3();
+         update_p3(val[3]);
     }
 
     button0.update();
@@ -102,3 +83,6 @@ int8_t encoder_update(){
     } 
     return 0;
    }
+
+
+ 
