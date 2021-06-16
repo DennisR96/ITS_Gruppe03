@@ -1,12 +1,9 @@
 #include <Arduino.h>
 #include <Bounce.h>
+#include "display.h"
 #include "control.h"
 #include "encoding.h"
-#include "display.h"
 #include "shield.h"
-
-
-//#include <shield.h>
 
 void setup() {
     Serial.begin(115200);
@@ -22,17 +19,13 @@ void setup() {
     Display.start();                                    // Display Start
     Display.clear();                                    // Display Clear
     Display.rect();                                     // Disp_rect
-    Display.fx_reverb();
+    Display.fx_bitcrush();
+    Display.update_p(p1[0], p2[0], p3[0]);
     
     // Fx
-    // AudioMemory(20);
-    // sgtl5000_1.enable();
-    // sgtl5000_1.volume(0.8);
-
-    // input1.amplitude(0.5);
-    // input1.frequency(500);
-    // freeverb1.roomsize(20);
-    // freeverb1.damping(200);
+    AudioMemory(20);
+    sgtl5000_1.enable();
+    sgtl5000_1.volume(0.8);
     }
 
 void loop() {

@@ -1,6 +1,6 @@
-float p1[4] = {0, 0, 0, 0};
+float p1[4] = {16, 20, 20, 50};
 float p2[4] = {0, 0, 0, 0};
-float p3[4] = {0, 0, 0, 0};
+float p3[4] = {44100, 2, 1, 50};
 int i = 0;
 
 void update_menu(int val)
@@ -10,25 +10,24 @@ void update_menu(int val)
     switch (i)
     {
     case 0:
-        Serial.print(i);
-        Serial.println(" Bitcrush");
+        Display.fx_bitcrush();
         break;
     case -1:
     case 1:
-        Serial.print(i);
-        Serial.println(" Chorus");
+        Display.fx_chrous();
         break;
     case -2:
     case 2:
-        Serial.print(i);
-        Serial.println(" Delay");
+        Display.fx_delay();
         break;
     case -3:
     case 3:
-        Serial.print(i);
-        Serial.println(" Reverb");
+        Display.fx_reverb();
+        
         break;
     }
+    Serial.print(i);
+    Display.update_p(p1[i], p2[i], p3[i]);
 }
 
 void update_p1(float val)
@@ -38,46 +37,41 @@ void update_p1(float val)
     case 0:
         p1[0] = p1[0] + val;
 
-        p1[0] = (p1[0] < 0.0) ? 0.0 : p1[0];   // Min: 0.0
-        p1[0] = (p1[0] > 16.0) ? 16.0 : p1[0]; // Max: 1.0
+        p1[0] = (p1[0] < 1.0) ? 1.0 : p1[0];   // Min: 0
+        p1[0] = (p1[0] > 16.0) ? 16.0 : p1[0]; // Max: 16
 
         Serial.println("Bits (Bitcrush): ");
         Serial.println(p1[0]);
+        Display.update_p(p1[0], p2[0], p3[0]);
         break;
     case 1:
         p1[1] = p1[1] + val;
+        
         Serial.println("Chorus: ");
         Serial.println(p1[1]);
+        Display.update_p(p1[1], p2[1], p3[1]);
         break;
     case 2:
         p1[2] = p1[2] + val;
+        
         Serial.println("Delay: ");
     case 3:
-        val = val / 100;
         p1[3] = p1[3] + val;
-
-        p1[3] = (p1[3] < 0.0) ? 0.0 : p1[3]; // Min: 0.0
-        p1[3] = (p1[3] > 1.0) ? 1.0 : p1[3]; // Max: 1.0
-
+        
         Serial.println("Roomsize (Reverb):");
         Serial.println(p1[3]);
         break;
-
-        break;
     }
+    
 }
 
-void update_p2(int val)
+void update_p2(float val)
 {
     switch (i)
     {
     case 0:
         p2[0] = p2[0] + val;
-
-        p2[0] = (p2[0] < 0.0) ? 0.0 : p2[0];   // Min: 0.0
-        p2[0] = (p2[0] > 44100.0) ? 44100.0 : p2[0]; // Max: 1.0
-
-        Serial.println("Bits (Bitcrush): ");
+        Serial.println("Wet Bitcrush");
         Serial.println(p2[0]);
         break;
     case 1:
@@ -86,56 +80,56 @@ void update_p2(int val)
         Serial.println(p2[1]);
         break;
     case 2:
-        val = val / 100;
         p2[2] = p2[2] + val;
-
-        p2[2] = (p2[2] < 0.0) ? 0.0 : p2[2]; // Min: 0.0
-        p2[2] = (p2[2] > 1.0) ? 1.0 : p2[2]; // Max: 1.0
-
         Serial.println("Damping (Reverb):");
         Serial.println(p2[2]);
         break;
     case 3:
-        p2[2] = p2[2] + val;
+        p2[3] = p2[3] + val;
         Serial.println("P1 (Delay)");
-        Serial.println(p2[2]);
+        Serial.println(p2[3]);
         break;
     }
     for (int idx = 0; idx < 4; idx++)
     {
-        p2[idx] = (p2[idx] > 100) ? 100 : p2[idx];
-        p2[idx] = (p2[idx] < 0) ? 0 : p2[idx];
+        p2[idx] = (p2[idx] >= 100) ? 100 : p2[idx];
+        p2[idx] = (p2[idx] <= 0) ? 0 : p2[idx];
     }
+    Display.update_p(p1[i], p2[i], p3[i]);
 }
 
-void update_p3(int val)
+void update_p3(float val)
 {
     switch (i)
     {
+
     case 0:
-        p2[0] = p2[0] + val;
-        Serial.println("P1 (Chorus:)");
-        Serial.println(p2[0]);
+
+        if (val < 0){
+            p3[0] = p3[0] * 0.5;
+        }
+        if (val > 0){
+            p3[0] = p3[0] * 2;
+        }
+        p3[0] = (p3[0] < 6300) ? 6300 : p3[0];   
+        p3[0] = (p3[0] > 44100) ? 44100 : p3[0]; 
+
         break;
     case 1:
-        p2[1] = p2[1] + val;
+        p3[1] = p3[1] + val;
         Serial.println("P1 (Distortion): ");
-        Serial.print(p2[1]);
+        Serial.print(p3[1]);
         break;
     case 2:
-        p2[2] = p2[2] + val;
+        p3[2] = p3[2] + val;
         Serial.println("P1 (Reverb)");
-        Serial.print(p2[2]);
+        Serial.print(p3[2]);
         break;
     case 3:
-        p2[2] = p2[2] + val;
+        p3[3] = p3[3] + val;
         Serial.println("P1 (Delay)");
-        Serial.print(p2[2]);
+        Serial.print(p3[3]);
         break;
     }
-    for (int idx = 0; idx < 4; idx++)
-    {
-        p2[idx] = (p2[idx] > 100) ? 100 : p2[idx];
-        p2[idx] = (p2[idx] < 0) ? 0 : p2[idx];
-    }
+    Display.update_p(p1[i], p2[i], p3[i]);
 }

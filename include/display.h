@@ -13,7 +13,8 @@ class Menu {
     ILI9341_t3 tft = ILI9341_t3(TFT_CS, TFT_DC, TFT_RST, TFT_MOSI, TFT_SCLK, TFT_MISO);
     public:
         void start(){
-            tft.begin();                                // Start TFT
+            tft.begin();
+
             tft.fillScreen(ILI9341_WHITE);              
             tft.setRotation(3);
             tft.setTextSize(3);
@@ -21,6 +22,7 @@ class Menu {
             tft.setCursor(100, 100);
             tft.print("Audio FX");
             delay(1000);
+
             tft.fillScreen(ILI9341_BLACK);              
             tft.setRotation(3);
             tft.setTextSize(3);
@@ -50,42 +52,109 @@ class Menu {
             tft.setTextColor(ILI9341_WHITE); 
             tft.setCursor(120, 160);
             tft.setTextSize(2);
-            tft.print("Dry/Wet");
+            tft.print("Wet");
             tft.setTextSize(3);
         }
-        void fx_chrous(){
+        void next(){
+            tft.setRotation(0);
+            tft.fillRect(70, 7, 70, 300, ILI9341_BLACK);                    
+            tft.fillRect(155, 4, 80, 95, ILI9341_BLACK);                    
+            tft.fillRect(155, 110, 80, 95, ILI9341_BLACK);                   
+            tft.fillRect(155, 218, 80, 95, ILI9341_BLACK);                   
+        }
+
+        void fx_bitcrush(){
+            next();
+            
             tft.setRotation(3);
             tft.setTextColor(ILI9341_WHITE); 
-            tft.setCursor(110, 90);
-            tft.print("Chorus");
+            tft.setCursor(0, 90);
+            tft.print("      Bitcrush");
+
+            tft.setTextSize(2);
+            tft.setCursor(12, 160);
+            tft.print("Bits");
+            tft.setCursor(120, 160);
+            tft.print("Wet");
+            tft.setCursor(225, 160);
+            tft.print("Fs");
+            
+            tft.setTextSize(3);
+        }
+
+        void fx_chrous(){
+            next();
+
+            tft.setRotation(3);
+            tft.setTextColor(ILI9341_WHITE); 
+            tft.setCursor(0, 90);
+            tft.print("      Chorus");
+
+            tft.setTextSize(2);
+            tft.setCursor(13, 160);
+            tft.print("Length");
+            tft.setCursor(120, 160);
+            tft.print("Wet");
+            tft.setCursor(225, 160);
+            tft.print("Voices");
+
+            tft.setTextSize(3);
         }
         
         void fx_delay(){
+            next();
+
             tft.setRotation(3);
             tft.setTextColor(ILI9341_WHITE); 
-            tft.setCursor(110, 90);
-            tft.print("Delay");
-        }
+            tft.setCursor(0, 90);
+            tft.print("      Delay");
 
-        void fx_distortion(){
-            tft.setRotation(3);
-            tft.setTextColor(ILI9341_WHITE); 
-            tft.setCursor(90, 90);
-            tft.print("Distortion");
+            tft.setTextSize(2);
+            tft.setCursor(13, 160);
+            tft.print("Ms");
+            tft.setCursor(120, 160);
+            tft.print("Wet");
+            tft.setCursor(225, 160);
+            tft.print("Channel");
+            
+            tft.setTextSize(3);
         }
-
         void fx_reverb(){
+            next();
+
             tft.setRotation(3);
             tft.setTextColor(ILI9341_WHITE); 
-            tft.setCursor(120, 90);
-            tft.print("Reverb");
+            tft.setCursor(0, 90);
+            tft.print("      Reverb");
+
             tft.setTextSize(2);
             tft.setCursor(13, 160);
             tft.print("Damping");
-            tft.setCursor(245, 160);
+            tft.setCursor(120, 160);
+            tft.print("Wet");
+            
+            tft.setCursor(225, 160);
             tft.print("Room");
-            tft.setCursor(245, 180);
-            tft.print("Size");
+            tft.setTextSize(3);
+        }
+        
+        void update_p(int p1, int p2, int p3){
+            tft.setTextSize(2);
+            
+            tft.setCursor(13, 200);
+            tft.fillRect(5,180, 90,50, ILI9341_BLACK);
+            tft.print(p1);
+            
+            tft.setCursor(120, 200);
+            tft.fillRect(115,180, 90,50, ILI9341_BLACK);
+            tft.print(p2);
+            
+            tft.setCursor(225, 200);
+            tft.fillRect(220,180, 90,50, ILI9341_BLACK);
+            tft.print(p3);
+            
+            tft.setTextSize(3);
+
         }
 
         
