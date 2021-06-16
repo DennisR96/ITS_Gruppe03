@@ -23,9 +23,12 @@ void setup() {
     Display.update_p(p1[0], p2[0], p3[0]);
     
     // Fx
-    AudioMemory(20);
+    
     sgtl5000_1.enable();
     sgtl5000_1.volume(0.8);
+    sine1.amplitude(0.8);
+    sine1.frequency(1000);
+    AudioMemory(20);
     }
 
 void loop() {
