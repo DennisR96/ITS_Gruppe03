@@ -1,9 +1,10 @@
 #include <Arduino.h>
 #include <Bounce.h>
+#include "shield.h"
 #include "display.h"
 #include "control.h"
 #include "encoding.h"
-#include "shield.h"
+
 
 void setup() {
     Serial.begin(115200);
@@ -23,16 +24,16 @@ void setup() {
     Display.update_p(p1[0], p2[0], p3[0]);
     
     // Fx
-    
-    sgtl5000_1.enable();
-    sgtl5000_1.volume(0.8);
-    sine1.amplitude(0.8);
-    sine1.frequency(1000);
     AudioMemory(20);
+    sgtl5000_1.enable();
+    sgtl5000_1.volume(0.5);
+    mixer1.gain(0,1);
+    mixer1.gain(1,0);
+    mixer1.gain(2,0);
+
     }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  encoder_update();
-  
+  //encoder_update();
 }
