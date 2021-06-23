@@ -21,15 +21,17 @@ void setup() {
     Display.start();                                    // Display Start
     Display.clear();                                    // Display Clear
     Display.rect();                                     // Disp_rect
-    Display.fx_bitcrush();
+    Display.reverb();
+    Display.update_p(p_reverb[0], p_reverb[1], p_reverb[2]);
     
     // Fx
     AudioMemory(200);
     sgtl5000_1.enable();
     sgtl5000_1.volume(1);
-    mixer1.gain(0,1);                 // Input1: Input
-    mixer1.gain(1,0);                 // Input2: Bitcrusher
-    mixer1.gain(2,0);                 // Input3: Reverb
+    mixer1.gain(0,1);                                     // Wet: Right 
+    mixer1.gain(1,1);                                     // Wet: Left
+    mixer1.gain(2,1);                                     // Dry: Left
+    mixer1.gain(3,1);                                     // Dry: Right
     }
 
 void loop() {

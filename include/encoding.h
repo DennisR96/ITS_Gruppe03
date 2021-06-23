@@ -71,7 +71,6 @@ int8_t encoder_update(){
 
     if (button0.fallingEdge()) {
         Serial.println("SW0: Gedrückt");
-        playMem1.play(AudioSampleSnare);
     } 
     if (button1.fallingEdge()) {
         Serial.println("SW1: Gedrückt");
