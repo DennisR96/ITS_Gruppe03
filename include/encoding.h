@@ -1,7 +1,3 @@
-// int CLK[4] = {30, 34, 37, 40};
-// int DATA[4] = {31, 33, 36, 39};
-// int SW[4] = {32, 35, 38, 41};
-
 int CLK[4] = {31,24, 27, 35};
 int DATA[4] = {30,25, 28, 34};
 int SW[4] = {32,26, 29, 33};
@@ -75,6 +71,7 @@ int8_t encoder_update(){
 
     if (button0.fallingEdge()) {
         Serial.println("SW0: Gedrückt");
+        playMem1.play(AudioSampleSnare);
     } 
     if (button1.fallingEdge()) {
         Serial.println("SW1: Gedrückt");

@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <AudioSampleSnare.h>
 #include <Bounce.h>
 #include "shield.h"
 #include "display.h"
@@ -21,19 +22,18 @@ void setup() {
     Display.clear();                                    // Display Clear
     Display.rect();                                     // Disp_rect
     Display.fx_bitcrush();
-    Display.update_p(p1[0], p2[0], p3[0]);
     
     // Fx
-    AudioMemory(20);
+    AudioMemory(200);
     sgtl5000_1.enable();
-    sgtl5000_1.volume(0.5);
-    mixer1.gain(0,1);
-    mixer1.gain(1,0);
-    mixer1.gain(2,0);
-
+    sgtl5000_1.volume(1);
+    mixer1.gain(0,1);                 // Input1: Input
+    mixer1.gain(1,0);                 // Input2: Bitcrusher
+    mixer1.gain(2,0);                 // Input3: Reverb
     }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  //encoder_update();
+  encoder_update();
+
 }
