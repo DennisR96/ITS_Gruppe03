@@ -51,7 +51,7 @@ void update_p1(float val)
     case 1:
         p_filter[0] = p_filter[0] + val*100;
 
-        p_filter[0] = (p_filter[0] < 0) ? 0 : p_filter[0];   
+        p_filter[0] = (p_filter[0] < 500) ? 500 : p_filter[0];   
         p_filter[0] = (p_filter[0] > 6000) ? 6000 : p_filter[0];
 
         Serial.println("L-Cut:");
