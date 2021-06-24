@@ -30,10 +30,16 @@ void setup() {
     AudioMemory(200);
     sgtl5000_1.enable();
     sgtl5000_1.volume(1);
-    mixer1.gain(0,0);                                     // Wet: Right 
-    mixer1.gain(1,0);                                     // Wet: Left
-    mixer1.gain(2,1);                                     // Dry: Left
-    mixer1.gain(3,1);                                     // Dry: Right
+    mixer1.gain(0,1);                                     // Wet: Right 
+    mixer1.gain(1,1);                                     // Wet: Left
+    mixer1.gain(2,0);                                     // Dry: Left
+    mixer1.gain(3,0);                                     // Dry: Right
+
+    biquad1.setLowpass(0, 1200,0.707);
+    biquad2.setLowpass(0, 1200,0.707);
+
+    biquad1.setHighpass(1, 8000,0.707);
+    biquad2.setHighpass(1, 8000,0.707);
     }
 
 void loop() {
