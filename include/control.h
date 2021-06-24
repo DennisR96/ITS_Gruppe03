@@ -52,7 +52,7 @@ void update_p1(float val)
         p_filter[0] = p_filter[0] + val*100;
 
         p_filter[0] = (p_filter[0] < 400) ? 400 : p_filter[0];   
-        p_filter[0] = (p_filter[0] > 6000) ? 6000 : p_filter[0];
+        p_filter[0] = (p_filter[0] > 12000) ? 12000 : p_filter[0];
 
         Serial.println("L-Cut:");
         Serial.println(p_filter[0]);
