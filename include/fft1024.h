@@ -1,4 +1,16 @@
-if (fft1024.available()) {
+#include <Audio.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <SD.h>
+#include <SerialFlash.h>
+
+AudioAnalyzeFFT1024      fft1024; 
+
+void loop(){
+
+int level[15]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+if (fft1024.available()) {//Variable aus Menüführung integrieren
     level[0] =  fft1024.read(1);
     level[1] =  fft1024.read(2);
     level[2] =  fft1024.read(3);
@@ -15,4 +27,4 @@ if (fft1024.available()) {
     level[13] = fft1024.read(138, 207);
     level[14] = fft1024.read(207, 414);
     level[15] = fft1024.read(414, 511);
-}
+}}
