@@ -80,6 +80,7 @@ void update_p2(float val)
         
         Serial.println("Dry/Wet");
         Serial.println(wet/100);
+        Serial.println(1-(wet/100));
 
         mixer1.gain(0,wet/100);
         mixer1.gain(1,wet/100);
@@ -96,12 +97,14 @@ void update_p2(float val)
         wet = (wet > 100) ? 100 : wet;
         
         Serial.println("Dry/Wet");
-        Serial.println(wet/100);
 
         mixer1.gain(0,wet/100);
         mixer1.gain(1,wet/100);
         mixer1.gain(2,1-(wet/100));
         mixer1.gain(3,1-(wet/100));
+
+        Serial.println(wet/100);
+        Serial.println(1-(wet/100));
         
         Display.update_p(p_filter[0], wet, p_filter[1]);
         break;

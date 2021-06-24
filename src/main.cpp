@@ -30,8 +30,8 @@ void setup() {
     AudioMemory(200);
     sgtl5000_1.enable();
     sgtl5000_1.volume(1);
-    mixer1.gain(0,1);                                     // Wet: Right 
-    mixer1.gain(1,1);                                     // Wet: Left
+    mixer1.gain(0,0);                                     // Wet: Right 
+    mixer1.gain(1,0);                                     // Wet: Left
     mixer1.gain(2,1);                                     // Dry: Left
     mixer1.gain(3,1);                                     // Dry: Right
     }
