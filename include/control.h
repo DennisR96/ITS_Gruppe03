@@ -1,6 +1,6 @@
 // Menu Variable
 float p_reverb[2] = {0, 0};                             // Damping, Room
-float p_filter[2] = {0, 20000};                          // Low Cut, N/A, High Cut
+float p_filter[2] = {800, 20000};                          // Low Cut, N/A, High Cut
 float wet = 0;
 int i = 0;
 
@@ -57,8 +57,8 @@ void update_p1(float val)
         Serial.println("L-Cut:");
         Serial.println(p_filter[0]);
         
-        //biquad1.setLowpass(0, p_filter[0], 0.707);
-        //biquad2.setLowpass(0, p_filter[0], 0.707);
+        biquad1.setLowpass(0, p_filter[0], 0.707);
+        biquad2.setLowpass(0, p_filter[0], 0.707);
         
         Display.update_p(p_filter[0], wet, p_filter[1]);
         break;
@@ -144,8 +144,8 @@ void update_p3(float val)
         Serial.println("High Cut: ");
         Serial.println(p_filter[1]);
 
-        //biquad1.setHighpass(1, p_filter[1], 0.707);
-        //biquad2.setHighpass(1, p_filter[1], 0.707);
+        biquad1.setHighpass(1, p_filter[1], 0.707);
+        biquad2.setHighpass(1, p_filter[1], 0.707);
 
         Display.update_p(p_filter[0], wet, p_filter[1]);        
         break;
