@@ -12,8 +12,12 @@ Bounce button3 = Bounce(SW[3], 15);
 
 static int8_t val[4] = {0, 0, 0, 0};
 
+unsigned long previousMillis = 0;
+const long interval = 500; 
 
-void fft_update(){        
+
+void fft_update(){ 
+    if (i == 2 || i == -1){
         level[0] =  fft1024.read(1);
         level[1] =  fft1024.read(2);
         level[2] =  fft1024.read(3);
@@ -30,7 +34,9 @@ void fft_update(){
         level[13] = fft1024.read(138, 207);
         level[14] = fft1024.read(207, 414);
         level[15] = fft1024.read(414, 511);
-        Display.fft(level);
+        Display.fft_update(level);
+    }       
+        
 }
 
 
@@ -70,7 +76,12 @@ int8_t encoder_init(uint16_t &store, uint8_t &prevNextCode,int CLK, int DATA){
    }
 
 int8_t encoder_update(){
-    fft_update();
+      unsigned long currentMillis = millis();
+    if (currentMillis - previousMillis >= interval) {
+        previousMillis = currentMillis;
+        fft_update();
+        currentMillis = 0;
+    }
     if (val[0]=encoder_init(store[0], prevNextCode[0], CLK[0], DATA[0]) ) {
         update_menu(val[0]);
         }

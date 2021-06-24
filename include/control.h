@@ -24,7 +24,7 @@ void update_menu(int val)
         break;
     case -1:
     case 2:
-        Display.fft(level);
+        Display.fft();
         Serial.println("FFT: ");
         break;
     }
