@@ -136,9 +136,9 @@ void update_p3(float val)
     case -2:
     case 1:
         
-        p_filter[1] = p_filter[1] - val*100;
+        p_filter[1] = p_filter[1] - val*400;
 
-       p_filter[1] = (p_filter[1] < 12000) ? 12000 : p_filter[1];   
+       p_filter[1] = (p_filter[1] < 1000) ? 1000 : p_filter[1];   
         p_filter[1] = (p_filter[1] > 20000) ? 20000 : p_filter[1];
 
 
