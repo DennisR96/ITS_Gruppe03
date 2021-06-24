@@ -1,6 +1,6 @@
-int CLK[4] = {31,24, 27, 35};
-int DATA[4] = {30,25, 28, 34};
-int SW[4] = {32,26, 29, 33};
+int CLK[4] = {31, 24, 27, 35};
+int DATA[4] = {30, 25, 28, 34};
+int SW[4] = {32, 26, 29, 33};
 
 uint8_t prevNextCode[4] = {0, 0, 0, 0};
 uint16_t store[4] = {0, 0, 0, 0};
@@ -13,7 +13,7 @@ Bounce button3 = Bounce(SW[3], 15);
 static int8_t val[4] = {0, 0, 0, 0};
 
 unsigned long previousMillis = 0;
-const long interval = 500; 
+const long interval = 300; 
 
 
 void fft_update(){ 

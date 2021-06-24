@@ -66,7 +66,7 @@ class Menu {
         void fft_update(float level[]){
             
               for (int i = 0; i<16; i++){
-                level[i] = level[i] * 250;
+                level[i] = level[i] * 500;
                 Serial.println(i);
                 Serial.println(level[i]);
             }
