@@ -34,6 +34,11 @@ void setup() {
     mixer1.gain(1,0);                                     // Wet: Left
     mixer1.gain(2,1);                                     // Dry: Left
     mixer1.gain(3,1);                                     // Dry: Rights
+
+    biquad1.setHighpass(0, p_filter[0], 0.707);
+    biquad2.setHighpass(0, p_filter[0], 0.707);
+    biquad1.setLowpass(1, p_filter[1], 0.707);
+    biquad2.setLowpass(1, p_filter[1], 0.707);
     }
 
 void loop() {
