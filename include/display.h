@@ -63,9 +63,31 @@ class Menu {
             tft.fillRect(155, 218, 80, 95, ILI9341_BLACK);                   
         }
 
-        void fft(int level[]){
-            clear();
-            tft.setRotation(0);
+        void fft(float level[]){
+            tft.fillScreen(ILI9341_BLACK);
+            tft.setTextSize(1);
+            tft.setCursor(0, 0);
+            tft.print(level[0]);
+            //tft.print(level[1]);
+            // tft.print(level[2]);
+            // tft.setCursor(30, 0);
+            // tft.print(level[3]);
+            // tft.print(level[4]);
+            // tft.print(level[5]);
+            tft.setCursor(50, 0);
+            tft.print(level[6]);
+            // tft.print(level[7]);
+            // tft.print(level[8]);
+            // tft.print(level[9]);
+            // tft.print(level[10]);
+            // tft.print(level[11]);
+            // tft.print(level[12]);
+            // tft.print(level[13]);
+            // tft.print(level[14]);
+            // tft.print(level[15]);
+
+            
+            /* tft.setRotation(0);
             tft.fillRect(0, 0, 60, 320, ILI9341_WHITE);
             tft.setRotation(3);
             tft.setTextColor(ILI9341_WHITE); 
@@ -101,8 +123,7 @@ class Menu {
             tft.setCursor(233, 225);
             tft.setTextColor(ILI9341_RED);
             tft.print("3kHz - 20kHz");
-            tft.setTextSize(3);
-            tft.setTextSize(3);
+            tft.setTextSize(3);" */
         }
         void reverb(){
             clear();
