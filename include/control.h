@@ -1,6 +1,6 @@
 // Menu Variable
 float p_reverb[2] = {0, 0};                             // Damping, Room
-float p_filter[2] = {800, 20000};                          // Low Cut, N/A, High Cut
+float p_filter[2] = {20000, 0};                          // Low Cut, N/A, High Cut
 float wet = 0;
 int i = 0;
 
@@ -51,7 +51,7 @@ void update_p1(float val)
     case 1:
         p_filter[0] = p_filter[0] + val*100;
 
-        p_filter[0] = (p_filter[0] < 500) ? 500 : p_filter[0];   
+        p_filter[0] = (p_filter[0] < 0) ? 0 : p_filter[0];   
         p_filter[0] = (p_filter[0] > 6000) ? 6000 : p_filter[0];
 
         Serial.println("L-Cut:");
