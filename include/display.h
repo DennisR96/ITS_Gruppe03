@@ -63,6 +63,12 @@ class Menu {
             tft.fillRect(155, 218, 80, 95, ILI9341_BLACK);                   
         }
 
+        void fft_up(int level[]){
+            Serial.println("Updating fft...");
+            Serial.println(level[1]);
+
+        }
+
         void fft(){
             clear();
             tft.setRotation(0);

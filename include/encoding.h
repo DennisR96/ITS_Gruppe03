@@ -12,6 +12,32 @@ Bounce button3 = Bounce(SW[3], 15);
 
 static int8_t val[4] = {0, 0, 0, 0};
 
+
+void fft_update(){
+    if (i == 2 || i == -1){
+        
+        level[0] =  fft1024.read(1);
+        level[1] =  fft1024.read(2);
+        level[2] =  fft1024.read(3);
+        level[3] =  fft1024.read(4);
+        level[4] =  fft1024.read(5, 7);
+        level[5] =  fft1024.read(7, 9);
+        level[6] =  fft1024.read(9, 13);
+        level[7] =  fft1024.read(13, 17);
+        level[8] =  fft1024.read(17, 23);
+        level[9] =  fft1024.read(23, 46);
+        level[10] = fft1024.read(46, 69);
+        level[11] = fft1024.read(69, 92);
+        level[12] = fft1024.read(92, 138);
+        level[13] = fft1024.read(138, 207);
+        level[14] = fft1024.read(207, 414);
+        level[15] = fft1024.read(414, 511);
+        Display.fft_up(level);
+    }
+    
+}
+
+
 void encoder_start(){
     pinMode(CLK[0],INPUT_PULLUP);
     pinMode(CLK[1],INPUT_PULLUP);
@@ -48,6 +74,7 @@ int8_t encoder_init(uint16_t &store, uint8_t &prevNextCode,int CLK, int DATA){
    }
 
 int8_t encoder_update(){
+    fft_update();
     if (val[0]=encoder_init(store[0], prevNextCode[0], CLK[0], DATA[0]) ) {
         update_menu(val[0]);
         }

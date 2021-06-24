@@ -6,8 +6,6 @@
 #include "control.h"
 #include "encoding.h"
 
-int level[15];
-
 
 void setup() {
     Serial.begin(115200);
@@ -44,5 +42,4 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   encoder_update();
-
 }
