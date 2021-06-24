@@ -6,6 +6,9 @@
 #include "control.h"
 #include "encoding.h"
 
+unsigned long previousMillis = 0;
+const long interval = 3000; 
+
 
 void setup() {
     Serial.begin(115200);
@@ -21,7 +24,7 @@ void setup() {
     Display.start();                                    // Display Start
     Display.clear();                                    // Display Clear
     Display.rect();                                     // Disp_rect
-    Display.reverb();
+    Display.fft(level);
     Display.update_p(p_reverb[0], wet, p_reverb[1]);
     
     // Fx
@@ -42,4 +45,14 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   //encoder_update();
+
+  unsigned long currentMillis = millis();
+
+  if (currentMillis - previousMillis >= interval) {
+    // save the last time you blinked the LED
+    previousMillis = currentMillis;
+    fft_update();
+    currentMillis = 0;
+  }
+
 }

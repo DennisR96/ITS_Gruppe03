@@ -13,9 +13,7 @@ Bounce button3 = Bounce(SW[3], 15);
 static int8_t val[4] = {0, 0, 0, 0};
 
 
-void fft_update(){
-    if (i == 2 || i == -1){
-        
+void fft_update(){        
         level[0] =  fft1024.read(1);
         level[1] =  fft1024.read(2);
         level[2] =  fft1024.read(3);
@@ -32,9 +30,7 @@ void fft_update(){
         level[13] = fft1024.read(138, 207);
         level[14] = fft1024.read(207, 414);
         level[15] = fft1024.read(414, 511);
-    }
-   
-    
+        Display.fft(level);
 }
 
 
