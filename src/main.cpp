@@ -6,6 +6,8 @@
 #include "control.h"
 #include "encoding.h"
 
+int level[15];
+
 
 void setup() {
     Serial.begin(115200);
@@ -22,7 +24,7 @@ void setup() {
     Display.clear();                                    // Display Clear
     Display.rect();                                     // Disp_rect
     Display.reverb();
-    Display.update_p(p_reverb[0], p_reverb[1], p_reverb[2]);
+    Display.update_p(p_reverb[0], wet, p_reverb[1]);
     
     // Fx
     AudioMemory(200);
