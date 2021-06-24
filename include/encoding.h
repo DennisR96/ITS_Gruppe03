@@ -33,7 +33,6 @@ void fft_update(){
         level[12] = fft1024.read(92, 138);
         level[13] = fft1024.read(138, 207);
         level[14] = fft1024.read(207, 414);
-        level[15] = fft1024.read(414, 511);
         Display.fft_update(level);
     }       
         
