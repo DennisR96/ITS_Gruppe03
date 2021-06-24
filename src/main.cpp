@@ -34,26 +34,10 @@ void setup() {
     mixer1.gain(1,1);                                     // Wet: Left
     mixer1.gain(2,0);                                     // Dry: Left
     mixer1.gain(3,0);                                     // Dry: Rights
-
-    biquad1.setLowpass(0, 500,0.707);
-    biquad2.setLowpass(0, 500,0.707);
-
-    biquad1.setHighpass(1, 20000,0.707);
-    biquad2.setHighpass(1, 20000,0.707);
     }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  //encoder_update();
-  button0.update();
-  if (button0.fallingEdge()) {
-        Serial.println("SW0: Gedrückt");
-        biquad1.setLowpass(0, 4000,0.707);
-        biquad2.setLowpass(0, 4000,0.707);
-
-        biquad1.setHighpass(1, 8000,0.707);
-        biquad2.setHighpass(1, 8000,0.707);
-    } 
-  
+  encoder_update();
 
 }

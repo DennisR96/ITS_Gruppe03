@@ -57,8 +57,8 @@ void update_p1(float val)
         Serial.println("L-Cut:");
         Serial.println(p_filter[0]);
         
-        biquad1.setLowpass(0, p_filter[0], 0.707);
-        biquad2.setLowpass(0, p_filter[0], 0.707);
+        biquad1.setHighpass(0, p_filter[0], 0.707);
+        biquad2.setHighpass(0, p_filter[0], 0.707);
         
         Display.update_p(p_filter[0], wet, p_filter[1]);
         break;
@@ -144,8 +144,8 @@ void update_p3(float val)
         Serial.println("High Cut: ");
         Serial.println(p_filter[1]);
 
-        biquad1.setHighpass(1, p_filter[1], 0.707);
-        biquad2.setHighpass(1, p_filter[1], 0.707);
+        biquad1.setLowpass(1, p_filter[1], 0.707);
+        biquad2.setLowpass(1, p_filter[1], 0.707);
 
         Display.update_p(p_filter[0], wet, p_filter[1]);        
         break;
