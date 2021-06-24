@@ -63,50 +63,45 @@ class Menu {
             tft.fillRect(155, 218, 80, 95, ILI9341_BLACK);                   
         }
 
-        void fft_up(int level[]){
-            Serial.println("Updating fft...");
-            Serial.println(level[1]);
-
-        }
-
         void fft(){
             clear();
-            tft.setRotation(0);
-            tft.fillRect(0, 0, 60, 320, ILI9341_WHITE);
-            tft.setRotation(3);
-            tft.setTextColor(ILI9341_WHITE); 
-            tft.setCursor(0, 20);
-            tft.setTextColor(ILI9341_BLACK);
-            tft.print("        FFT");
-            tft.setRotation(1);
-            tft.fillRect(305, 20, 10, 150, ILI9341_PURPLE); //Variable aus fft integrieren. Evtl. schwarze, gegenläufige Rechtecke
-            tft.fillRect(285, 20, 10, 150, ILI9341_PURPLE);
-            tft.fillRect(265, 20, 10, 150, ILI9341_PURPLE);
-            tft.fillRect(245, 20, 10, 150, ILI9341_PURPLE);
-            tft.fillRect(225, 20, 10, 150, ILI9341_PURPLE);
-            tft.fillRect(205, 20, 10, 150, ILI9341_BLUE);
-            tft.fillRect(185, 20, 10, 150, ILI9341_BLUE);
-            tft.fillRect(165, 20, 10, 150, ILI9341_BLUE);
-            tft.fillRect(145, 20, 10, 150, ILI9341_BLUE);
-            tft.fillRect(125, 20, 10, 150, ILI9341_BLUE);
-            tft.fillRect(105, 20, 10, 150, ILI9341_BLUE);
-            tft.fillRect(85, 20, 10, 150, ILI9341_RED);
-            tft.fillRect(65, 20, 10, 150, ILI9341_RED);
-            tft.fillRect(45, 20, 10, 150, ILI9341_RED);
-            tft.fillRect(25, 20, 10, 150, ILI9341_RED);
-            tft.fillRect(5, 20, 10, 150, ILI9341_RED);
+            // tft.setRotation(0);
+            // tft.fillRect(0, 0, 60, 320, ILI9341_WHITE);
+            // tft.setRotation(3);
+            // tft.setTextColor(ILI9341_WHITE); 
+            // tft.setCursor(0, 20);
+            // tft.setTextColor(ILI9341_BLACK);
+            // tft.print("        FFT");
+            // tft.setRotation(1);
+            // tft.fillRect(305, 20, 10, 150, ILI9341_PURPLE); //Variable aus fft integrieren. Evtl. schwarze, gegenläufige Rechtecke
+            // tft.fillRect(285, 20, 10, 150, ILI9341_PURPLE);
+            // tft.fillRect(265, 20, 10, 150, ILI9341_PURPLE);
+            // tft.fillRect(245, 20, 10, 150, ILI9341_PURPLE);
+            // tft.fillRect(225, 20, 10, 150, ILI9341_PURPLE);
+            // tft.fillRect(205, 20, 10, 150, ILI9341_BLUE);
+            // tft.fillRect(185, 20, 10, 150, ILI9341_BLUE);
+            // tft.fillRect(165, 20, 10, 150, ILI9341_BLUE);
+            // tft.fillRect(145, 20, 10, 150, ILI9341_BLUE);
+            // tft.fillRect(125, 20, 10, 150, ILI9341_BLUE);
+            // tft.fillRect(105, 20, 10, 150, ILI9341_BLUE);
+            // tft.fillRect(85, 20, 10, 150, ILI9341_RED);
+            // tft.fillRect(65, 20, 10, 150, ILI9341_RED);
+            // tft.fillRect(45, 20, 10, 150, ILI9341_RED);
+            // tft.fillRect(25, 20, 10, 150, ILI9341_RED);
+            // tft.fillRect(5, 20, 10, 150, ILI9341_RED);
             
-            tft.setTextSize(1);
-            tft.setRotation(3);
-            tft.setCursor(25, 225);
-            tft.setTextColor(ILI9341_PURPLE);
-            tft.print("20 - 300Hz");
-            tft.setCursor(125, 225);
-            tft.setTextColor(ILI9341_BLUE);
-            tft.print("300Hz - 3kHz");
-            tft.setCursor(233, 225);
-            tft.setTextColor(ILI9341_RED);
-            tft.print("3kHz - 20kHz");
+            // tft.setTextSize(1);
+            // tft.setRotation(3);
+            // tft.setCursor(25, 225);
+            // tft.setTextColor(ILI9341_PURPLE);
+            // tft.print("20 - 300Hz");
+            // tft.setCursor(125, 225);
+            // tft.setTextColor(ILI9341_BLUE);
+            // tft.print("300Hz - 3kHz");
+            // tft.setCursor(233, 225);
+            // tft.setTextColor(ILI9341_RED);
+            // tft.print("3kHz - 20kHz");
+            // tft.setTextSize(3);
             tft.setTextSize(3);
         }
         void reverb(){
