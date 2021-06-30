@@ -20,7 +20,8 @@ class Menu {
             tft.setTextSize(3);
             tft.setTextColor(ILI9341_BLACK);
             tft.setCursor(100, 100);
-            tft.print("Audio FX");
+            tft.print("Frequency \n      Analysis \n      & Reverb");
+
             delay(1000);
 
             tft.fillScreen(ILI9341_BLACK);              
