@@ -88,7 +88,6 @@ class Menu {
             tft.fillRect(45, 20, 10, level[12], ILI9341_RED);
             tft.fillRect(25, 20, 10, level[13], ILI9341_RED);
             tft.fillRect(5, 20, 10, level[14], ILI9341_RED);
-
         }
 
         void fft(){
@@ -118,7 +117,6 @@ class Menu {
         void reverb(){
             clear();
             rect();
-
             tft.setRotation(3);
             tft.setTextColor(ILI9341_WHITE); 
             tft.setCursor(0, 90);

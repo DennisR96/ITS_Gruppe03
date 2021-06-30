@@ -13,7 +13,7 @@ Bounce button3 = Bounce(SW[3], 15);
 static int8_t val[4] = {0, 0, 0, 0};
 
 unsigned long previousMillis = 0;
-const long interval = 300; 
+const long interval = 50; 
 
 
 void fft_update(){ 

@@ -6,6 +6,10 @@
 #include "control.h"
 #include "encoding.h"
 
+// Reset Buttons
+// Steuerung in der FFT
+// Grenze definieren
+
 void setup() {
     Serial.begin(115200);
 
