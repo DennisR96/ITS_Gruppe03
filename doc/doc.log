@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.5.15)  30 JUN 2021 17:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.5.15)  30 JUN 2021 17:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -72,13 +72,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 Here is how much of TeX's memory you used:
  558 strings out of 478994
  9613 string characters out of 5858184
- 295055 words of memory out of 5000000
+ 295057 words of memory out of 5000000
  18116 multiletter control sequences out of 15000+600000
  405546 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  44i,11n,55p,208b,200s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on /Users/dennisrak/Documents/PlatformIO/Projects/ITS_Gruppe03/doc/doc.pdf (2 pages, 36842 bytes).
+Output written on /Users/dennisrak/Documents/PlatformIO/Projects/ITS_Gruppe03/doc/doc.pdf (2 pages, 36951 bytes).
 PDF statistics:
  23 PDF objects out of 1000 (max. 8388607)
  15 compressed objects within 1 object stream
