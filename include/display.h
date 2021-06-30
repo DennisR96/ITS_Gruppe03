@@ -19,8 +19,8 @@ class Menu {
             tft.setRotation(3);
             tft.setTextSize(3);
             tft.setTextColor(ILI9341_BLACK);
-            tft.setCursor(100, 100);
-            tft.print("Frequency \n      Analysis \n      & Reverb");
+            tft.setCursor(90, 90);
+            tft.print("Frequency \n     Analysis \n     & Reverb");
 
             delay(1000);
 
