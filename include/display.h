@@ -104,13 +104,13 @@ class Menu {
             tft.setRotation(3);
             tft.setCursor(25, 225);
             tft.setTextColor(ILI9341_PURPLE);
-            tft.print("50 - 860Hz");
+            tft.print("40 - 860Hz");
             tft.setCursor(125, 225);
             tft.setTextColor(ILI9341_BLUE);
             tft.print("860Hz - 8.6kHz");
             tft.setCursor(233, 225);
             tft.setTextColor(ILI9341_RED);
-            tft.print("8.6kHz - 20kHz");
+            tft.print("8.6kHz - 22kHz");
             tft.setTextSize(3);
             tft.setRotation(0);
         }
