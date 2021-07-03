@@ -20,9 +20,16 @@
 \maketitle
 \newpage
 \section{Konzept}
+Anfänglich erfolgt eine Erklärung des projektlichen Gesamtkonzepts.
 \section{Funktionen}
 \section{Umsetzung}
 \section{Umsetzung im Programmcode}
+
+\subsection{Control.h}
+\subsection{Encoding.h}
+\subsection{Control.h}
+\subsection{Control.h}
+
 \section{Probleme}
 In diesem Abschnitt werden die Hindernisse und Probleme bei der Realisation des Projektes beschreiben.
 \subsection{Audio-Board}
@@ -39,8 +46,12 @@ Es ist zwar leicht das Konzept nachzubauen, aber ohne stabiles DSP Framework ist
 Performance nur schlecht möglicht. 
 \\
 \\
-Der Teensy erweist sich bei diesem Verfahren ebenfalls als eine Herausforderung. Bei Überwindung dieser ersten Herausforderung
-ist es    
+Der Teensy erweist sich bei diesem Verfahren ebenfalls als eine Herausforderung. Bei Überwindung der ersten Herausforderung 
+ist eine Einbindung in die bestehende Teensy Bibliothek notwendig. Dies ist sehr umständlich und ohne ein absolutes Verständnis nicht möglich. 
+Leider gibt es von Seiten der Entwickler keine Anleitung eigene Effekte in die bestehende "Teensy Audio Library" einzubauen. 
+\\
+\\
+Alles in allem führten diese Hindernisse zu einer Abkehr vom Bau eigener Effekte.  
 \subsection{Verlust eines Teensy Boards}
 Beim Anschluss der Drehencoder ist eine fehlerhafte Anbindung an . 
 Da die Teensy PINs nicht 5V tolerant sind, führte dies zu einer Zerstörung des Teensy Boards.
