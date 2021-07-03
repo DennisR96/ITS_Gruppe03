@@ -1,6 +1,6 @@
 // Menu Variable
-float p_reverb[2] = {0, 0};                             // Damping, Room
-float p_filter[2] = {400, 12000};                          // Low Cut, N/A, High Cut
+float p_reverb[2] = {0, 0};                                     // Damping, Room
+float p_filter[2] = {400, 12000};                               // Low Cut, N/A, High Cut
 float wet = 0;
 int i = 0;
 float level[15];
