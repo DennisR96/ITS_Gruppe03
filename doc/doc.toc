@@ -1,0 +1,15 @@
+\babel@toc {ngerman}{}
+\contentsline {section}{\numberline {1}Konzept}{3}{}%
+\contentsline {section}{\numberline {2}Funktionen}{3}{}%
+\contentsline {section}{\numberline {3}Umsetzung}{3}{}%
+\contentsline {section}{\numberline {4}Umsetzung im Programmcode}{4}{}%
+\contentsline {subsection}{\numberline {4.1}main.cpp}{4}{}%
+\contentsline {subsection}{\numberline {4.2}Control.h}{4}{}%
+\contentsline {subsection}{\numberline {4.3}Display.h}{4}{}%
+\contentsline {subsection}{\numberline {4.4}Encoding.h}{4}{}%
+\contentsline {subsection}{\numberline {4.5}Shield.h}{5}{}%
+\contentsline {section}{\numberline {5}Probleme}{6}{}%
+\contentsline {subsection}{\numberline {5.1}Audio-Board}{6}{}%
+\contentsline {subsection}{\numberline {5.2}Einbinden von Effekten}{6}{}%
+\contentsline {subsection}{\numberline {5.3}Verlust eines Teensy Boards}{6}{}%
+\contentsline {section}{\numberline {6}Fazit}{7}{}%
