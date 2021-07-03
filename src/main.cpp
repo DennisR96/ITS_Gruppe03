@@ -1,5 +1,4 @@
 #include <Arduino.h>
-#include <AudioSampleSnare.h>
 #include <Bounce.h>
 #include "shield.h"
 #include "display.h"

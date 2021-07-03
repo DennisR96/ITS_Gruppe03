@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
 
 \usepackage{fancyhdr}                       % Package: Fancy HDR
+\usepackage{graphicx}
 
 \title{Projektdokumentation: Frequenz-Analyse und Hall}        % Titel
 \author{David Yaman, Dennis Räk}            % Author
@@ -24,11 +25,25 @@ Anfänglich erfolgt eine Erklärung des projektlichen Gesamtkonzepts.
 \section{Funktionen}
 \section{Umsetzung}
 \section{Umsetzung im Programmcode}
-
+\subsection{main.cpp}
+Die "main.cpp" ist das Herzstück des Programmcodes. Im Setup werden zuerst die Enocder initialisiert und anschließend das Display. 
+Außerdem werden Audio-Board sowie zugehörige Effekte aktiviert. 
+Durch "encoder update" wird innerhalb der Loop Funktion auf Änderungen im Status der Encoder gewartet.
 \subsection{Control.h}
+Mit der Bibliothek "Control.h" wird die allgemeine Ansteuerung initialisiert. Über Switch-Cases wird je nach Status des Encoders eine Menu-Variable angewählt. 
+\\
+\\
+\textbf{Beispiel:}
+\\
+Encoder A beeinflusst die Menü-Auswahl und steht auf dem Case 0. Wird nun der Encoder C gedreht, dann beeinflusst dieser die Dämpfung des Hall-Effektes.
+Steht Enocder A auf dem Case 1, dann beeinflusst Encoder C die Grenzfrequenz des Low-Pass Filters.
+\subsection{Display.h}
+Dieser Programmabschnitt enthält die Display Klasse. 
 \subsection{Encoding.h}
-\subsection{Control.h}
-\subsection{Control.h}
+Diese Bibliothek
+\subsection{Shield.h}
+Dieser Teil des Codes ist mithilfe des Audio System Design Tools entstanden. 
+
 
 \section{Probleme}
 In diesem Abschnitt werden die Hindernisse und Probleme bei der Realisation des Projektes beschreiben.
@@ -59,6 +74,8 @@ Es musste ein Ersatzgerät erworben werden.
 
   
 \section{Fazit}
-Alles in allem ist das Projekt erfolgreich gewesen. 
+Trotz einiger Planänderungen ist das Projekt erfolgreich gewesen. Es ist ein funktionstüchtiger Halleffekt mit Analyse über eine Fast Fourier Transformation entstanden.
+Da einige Dinge wie das Einbinden von Effekten zum jetzigen Zeitpunkt noch nicht erreicht werden konnte, bietet das Projekt auch nach der IT-Systeme 
+Veranstaltung Möglichkeiten der Weiterarbeit.  
 
 \end{document}
