@@ -103,16 +103,30 @@ int8_t encoder_update(){
     button3.update();
 
     if (button0.fallingEdge()) {
-        Serial.println("SW0: Gedrückt");
+        Serial.println("Reverb zurückgesetzt");
+        p_reverb[2] = {0, 0}; 
     } 
     if (button1.fallingEdge()) {
-        Serial.println("SW1: Gedrückt");
+        Serial.println("Filter zurückgesetzt");
+        p_filter[2] = {400, 12000};
     } 
     if (button2.fallingEdge()) {
-        Serial.println("SW2: Gedrückt");
+        Serial.println("Wet 100%");
+        wet = 0;
+        mixer1.gain(0,wet/100);
+        mixer1.gain(1,wet/100);
+        mixer1.gain(2,1-(wet/100));
+        mixer1.gain(3,1-(wet/100));
+        
     } 
     if (button3.fallingEdge()) {
-        Serial.println("SW3: Gedrückt");
+        Serial.println("Dry 100%");
+        wet = 100;
+        
+        mixer1.gain(0,wet/100);
+        mixer1.gain(1,wet/100);
+        mixer1.gain(2,1-(wet/100));
+        mixer1.gain(3,1-(wet/100));
     } 
     return 0;
    }

@@ -2,6 +2,7 @@
 \contentsline {section}{\numberline {1}Konzept}{3}{}%
 \contentsline {section}{\numberline {2}Funktionen}{3}{}%
 \contentsline {section}{\numberline {3}Umsetzung}{3}{}%
+\contentsline {subsection}{\numberline {3.1}Hardware}{3}{}%
 \contentsline {section}{\numberline {4}Umsetzung im Programmcode}{4}{}%
 \contentsline {subsection}{\numberline {4.1}main.cpp}{4}{}%
 \contentsline {subsection}{\numberline {4.2}Control.h}{4}{}%
