@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.5.15)  30 JUN 2021 17:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.5.15)  3 JUL 2021 12:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -61,6 +61,25 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [1
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (25.01932pt too wide) in paragraph at lines 29--31
+\OT1/cmr/m/n/12 Erst durch aufl^^?oten auf eine Lochraster-plat-tine ist eine In-ter-feren-zfreie Verbindung
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--44
+
+ []
+
+
+Overfull \hbox (2.94604pt too wide) in paragraph at lines 32--44
+\OT1/cmr/m/n/12 oder MAT-LAB re-al-isieren, aber f^^?ur eine ef-fiziente Pro-gram-mierung in Echtzeit
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--44
+
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -70,15 +89,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [2] (/Users/dennisrak/Documents/PlatformIO/Projects/ITS_Gruppe03/doc/doc.aux) ) 
 Here is how much of TeX's memory you used:
- 558 strings out of 478994
- 9613 string characters out of 5858184
- 295057 words of memory out of 5000000
- 18116 multiletter control sequences out of 15000+600000
- 405546 words of font info for 34 fonts, out of 8000000 for 9000
+ 562 strings out of 478994
+ 9654 string characters out of 5858184
+ 298076 words of memory out of 5000000
+ 18120 multiletter control sequences out of 15000+600000
+ 405853 words of font info for 35 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,11n,55p,208b,200s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,11n,55p,232b,200s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on /Users/dennisrak/Documents/PlatformIO/Projects/ITS_Gruppe03/doc/doc.pdf (2 pages, 36951 bytes).
+Output written on /Users/dennisrak/Documents/PlatformIO/Projects/ITS_Gruppe03/doc/doc.pdf (2 pages, 45781 bytes).
 PDF statistics:
  23 PDF objects out of 1000 (max. 8388607)
  15 compressed objects within 1 object stream

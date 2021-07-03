@@ -2,7 +2,7 @@
 
 \usepackage{fancyhdr}                       % Package: Fancy HDR
 
-\title{Projektdokumentation: Reverb}        % Titel
+\title{Projektdokumentation: Frequenz-Analyse und Hall}        % Titel
 \author{David Yaman, Dennis Räk}            % Author
 \date{IT-Systeme: SS 2021}                    % Datum/Kurs
 
@@ -24,7 +24,30 @@
 \section{Umsetzung}
 \section{Umsetzung im Programmcode}
 \section{Probleme}
-- Eigene Effekte programmieren
+In diesem Abschnitt werden die Hindernisse und Probleme bei der Realisation des Projektes beschreiben.
+\subsection{Audio-Board}
+Anfänglich kam es zu Schwierigkeiten beim Anschluss des Audio-Boards. Über normale Jumper Wire ist eine störfreie Signalwiedergabe nicht möglich. 
+Erst durch auflöten auf eine Lochrasterplattine ist eine Interferenzfreie Verbindung möglich und das Audio-Board funktioniert planmäßig.
+\subsection{Einbinden von Effekten}
+Im ursprünglichen Konzept sollte die eigenständige Programmierung von Audio Effekten erfolgen. 
+Dieses Verfahren ist an mehreren Stellen gescheitert. 
+\\
+\\
+Viele Effekte lassen sich leicht in höheren Programmiersprachen
+wie Python oder MATLAB realisieren, aber für eine effiziente Programmierung in Echtzeit werden viele erweiterte C Kentnisse benötigt. 
+Es ist zwar leicht das Konzept nachzubauen, aber ohne stabiles DSP Framework ist eine gute 
+Performance nur schlecht möglicht. 
+\\
+\\
+Der Teensy erweist sich bei diesem Verfahren ebenfalls als eine Herausforderung. Bei Überwindung dieser ersten Herausforderung
+ist es    
+\subsection{Verlust eines Teensy Boards}
+Beim Anschluss der Drehencoder ist eine fehlerhafte Anbindung an . 
+Da die Teensy PINs nicht 5V tolerant sind, führte dies zu einer Zerstörung des Teensy Boards.
+Es musste ein Ersatzgerät erworben werden. 
+
+  
 \section{Fazit}
+Alles in allem ist das Projekt erfolgreich gewesen. 
 
 \end{document}
