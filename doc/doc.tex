@@ -13,7 +13,7 @@
 \fancyhf{}                                  % alle Kopf- und Fußzeilenfelder bereinigen
 \fancyhead[L]{ITS SS 2021}                  % Header links
 \fancyhead[C]{}                             % Header Mitte
-\fancyhead[R]{David Yaman, Dennis Räk [2385799]}      % Header rechts
+\fancyhead[R]{David Yaman [2321570], Dennis Räk [2385799]}      % Header rechts
 \renewcommand{\headrulewidth}{0.4pt}        % Trennlinie (Oben)
 \fancyfoot[C]{\thepage}                     % Seitennummer
 \renewcommand{\footrulewidth}{0.4pt}        % Trennlinie (Unten)
@@ -26,7 +26,7 @@
 \newpage
 \section{Konzept}
 Das entwickelte Gerät ist ein Hall-Effektgerät mit zusätzlicher Monitoring-Möglichkeit über Betrachtung des Frequenzspektrums des Ausgangssignals. 
-Informationen über die Funktionsweise und Parameter werden über einen LCD Monitor dargestellt und können mit Hilfe von vier Dreh-Encodern angepasst werden. 
+Informationen über die Funktionsweise und Parameter werden über ein LCD Display dargestellt und können mit Hilfe von vier Dreh-Encodern angepasst werden. 
 Der Halleffekt hat die Parameter Room und Damping. Zusätzlich begrenzen Filtermodule das verhallte Signal im Frequenzbereich. 
 Die variablen Grenzfrequenzen sind auch während Darstellung des Frequenzspektrums veränderbar, um neben auditiver auch visuelle Kontrolle zu ermöglichen. 
 Der bandbegrenzte Hallanteil im Ausgangssignal lässt sich über Dry/Wet Kontrollieren.
@@ -50,56 +50,77 @@ Der hörbare Frequenzbereich wird in 15 Balken aufgeteilt. Die Aufteilung orient
 Daher sind hohe Frequenzen breiter zusammengefasst als tiefe. 
 Balken Eins bis Vier stellen Frequenzen von 40 bis 860 Hz dar, Fünf bis Zehn Frequenzen von 860 bis 8,6 kHz und Elf bis Fünfzehn Frequenzen von 8,6 kHz bis 22 kHz.
 Encoder Zwei bis Vier sind auf dieselbe Weise belegt wie in Menüpunkt Zwei.
+\newpage
 \section{Umsetzung}
 Die Umsetzung erfolgt mit Hilfe eines Teensy 4.1 Micro-Controllers. 
 Angeschlossen ist außerdem das speziell für den Teensy 4.1 entwickelte Audioboard SGTL5000. 
 Für die Anzeige des Menüs wird ein 2.8 Zoll TFT Display (ILI9341) genutzt und es werden vier KY-040 Dreh-Encoder der Marke Joy-It mit dem Micro-Controller verbunden. 
 Für den Aufbau wird eine Lochrasterplatine verwendet.
 \subsection{GUI}
-Das Userinterface ist in drei Menüpunkte aufgeteilt. Menüpunkt Eins gehört zum Halleffekt. Mittig wird „Reverb“ angezeigt. 
-Das untere Drittel des Displays ist in drei Kästen aufgeteilt die von links nach rechts P2, Dry/Wet und Room und die jeweiligen Werte anzeigen. 
-P2 und Room werden von 0 – 100, Dry/Wet von 0\% - 100\% angezeigt. Der Aufbau von Menüpunkt Zwei ist gleich. 
+Das Userinterface ist in drei Menüpunkte aufgeteilt. Menüpunkt Eins gehört zum Halleffekt. Mittig wird Reverb angezeigt. 
+Das untere Drittel des Displays ist in drei Kästen aufgeteilt die von links nach rechts Damping, Dry/Wet und Room und die jeweiligen Werte anzeigen. 
+Damping und Room werden von 0 – 100, Dry/Wet von 0\% - 100\% angezeigt. Der Aufbau von Menüpunkt Zwei ist gleich. 
 Die Parameter umfassen von links nach rechts Low-Cut, Dry/Wet und High-Cut. Low-Cut läuft zwischen 400 Hz und 12 kHz, High-Cut zwischen 12 kHz und 1,2 kHz, in einer Schrittweite von 100 Hz. 
+Menüpunkt Drei zeigt die Frequenzanalyse an. Hier werden 15 Frequenzbänder mit ihrer momentanen Aussteuerung im Ausgangssignal angezeigt. Die Encoder sind gleich wie in Menüpunkt Zwei belegt.
 Die Ansteuerung erfolgt über die Encoder nach folgendem Schema:
+\\
+\\
+\\
+\begin{table}[h]
+    \centering
+    \caption{Encoder Belegung}
+    \label{tbl:encoderbelegung}
+    \begin{tabular}{l|l|l}
+      \textbf{Encoder}  & \textbf{Funktion Hall} & \textbf{Funktion Filter/FFT}\\
+      \hline
+      1 & Menü & Menü \\
+   
+      2 & Damping & Low-Cut \\
+   
+      3 & Dry/Wet & Dry/Wet \\
+      
+      4 & Room & High-Cut \\
+     
 
+    \end{tabular}    
 
+\end{table}
 
-Übersicht der im Projekt verwendeten Hardware:
-\begin{itemize}
-    \item 1x Teensy 4.1 Development Board
-    \item 1x Teensy Audio Adaptor Rev D
-    \item 1x 2.8 Zoll TFT Display (ILI9341)
-    \item 4x KY-040 Drehencoder
-    \item 1x Lochrasterplattine
-\end{itemize}
-Übersicht:
-- Audio Adaptor 
->>>>>>> ead2698653e6e68f18f0f9627ea154d6ef125572
 \newpage
-\section{Umsetzung im Programmcode}
-\subsection{main.cpp}
+
+\subsection{Programmcode}
+Der Teensy 4.1 übernimmt mit seiner hohen Rechenleistung die Steuerung aller Funktionen. 
+Das digitalgewandelte Audiosignal wird von ihm verhallt und bandbegrenzt. 
+Währenddessen können Parameter und Grenzfrequenzen laufend verändert und über das Display ausgelesen werden. 
+Auch die FFT wird vom Teensy durchgeführt und zur Visualisierung an das Display übergeben.
+\subsubsection{main.cpp}
 Die main ist das Herzstück des Programmcodes. Im Setup werden zuerst die Enocder initialisiert und anschließend das Display. 
 Außerdem werden Audio-Board sowie zugehörige Effekte aktiviert. 
-Durch "encoder update" wird innerhalb der Loop Funktion auf Änderungen im Status der Encoder gewartet.
-\subsection{Control.h}
-Mit der Bibliothek "Control.h" wird die allgemeine Ansteuerung initialisiert. Über Switch-Cases wird je nach Status des Encoders eine Menu-Variable angewählt. 
+Durch die \glq encoder update\grq{} - Funktion wird innerhalb der Loop Funktion auf Änderungen im Status der Encoder gewartet.
+\subsubsection{Control.h}
+Mit der Bibliothek \glq Control.h\grq{} wird die allgemeine Ansteuerung initialisiert. 
+Über Switch-Cases wird je nach Status des Encoders eine Menü-Variable und damit einer der drei Menüpunkte angewählt. Diese Information wird an \glq Display.h\grq{}   übergeben 
+und Parameterwerte der Effekte, sowie die Dry/Wet Zusammensetzung am virtuellen Audiomixer werden direkt angepasst.
 \\
 \\
 \textbf{Beispiel:}
 \\
 Encoder A beeinflusst die Menü-Auswahl und steht auf dem Case 0. Wird nun der Encoder C gedreht, dann beeinflusst dieser die Dämpfung des Hall-Effektes.
 Steht Enocder A auf dem Case 1, dann beeinflusst Encoder C die Grenzfrequenz des Low-Pass Filters.
-\subsection{Display.h}
+\subsubsection{Display.h}
 Dieser Programmabschnitt enthält die Display Klasse. In dieser werden Funktionen bereitgestellt, um die Änderung an Encoder oder FFT bildlich darzustellen.  
-Wechselt der Nutzer zu einem anderen Menüpunkt oder verändert einen Parameter, dann wird der jeweilige Bildschirmbereich gelöscht und durch den aktuellen ersetzt. 
+Wechselt der Nutzer zu einem anderen Menüpunkt oder verändert einen Parameter, dann wird der jeweilige Bildschirmbereich zurückgesetzt und durch den aktuellen ersetzt. 
 Nach diesem Muster funktionieren Menüpunkte, Parameter sowie FFT. Beim Start des Programmes wird ein kleines Intro geladen.
-
-\subsection{Encoding.h}
+Wird Menüpunkt Drei aufgerufen, startet die FFT mit 1024 Samplewerten. Die FFT erzeugt 511 Frequenzbänder die den jeweiligen Frequenzanteil (0 – 1) enthalten. 
+Die Werte werden normiert und begrenzt auf die 15 Balken aufgeteilt und vom Display angezeigt. 
+Die Milliseconds-Funktion steuert den Aktualisierungsintervall.  
+Die FFT, Halleffekt und die Filter wurden aus der Teensy Audio Library entnommen.$^{[1]}$
+\subsubsection{Encoding.h}
 Die Encoding Bibliothek ist einer der wichtigsten Teile des Codes, da eine Bedienung ohne funktionierende Encoder nicht möglich ist. Um akkurate Veränderung am Encoder wahrzunehmen, 
 müssen diese Entprellt werden. Bei der Wahl einer geeigneten Entprellung zeigte das Quadrature Phase Shift Encoding von John Main gute Ergebnisse. Mit hoher Genauigkeit lassen sich 
 kleine Veränderung am Encoder als +1 oder -1 wahrnehmen. Über die im Loop eingebettete encoder update Funktion wird eine Änderung am Encoder erkannt und in Form einer In- oder Decrementation an die Control 
 Bibliothek weitergegeben. Die Knöpfe der Encoder werden durch die Bounce Library entprellt und ebenfalls über die Update Funktion überwacht.   
-\subsection{Shield.h}
+\subsubsection{Shield.h}
 Dieser Teil des Codes ist mithilfe des Teensy Audio System Design Tools generiert. Hier wird das Routing des Eigangssignals durch die verschiedenen Effekte festgelegt 
 Aus einem Screenshot des Audio System Design Tools wird das im Code erzeugte Routing deutlich:
 \\
