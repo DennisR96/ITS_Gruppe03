@@ -1,22 +1,25 @@
+// Variables: PIN-Codes of Rotary Encoder
 int CLK[4] = {31, 24, 27, 35};
 int DATA[4] = {30, 25, 28, 34};
 int SW[4] = {32, 26, 29, 33};
 
+// Variables: Quadrature Phase Encoding
 uint8_t prevNextCode[4] = {0, 0, 0, 0};
 uint16_t store[4] = {0, 0, 0, 0};
+static int8_t val[4] = {0, 0, 0, 0};
 
+// Variables: FFT Update Timer 
+unsigned long previousMillis = 0;
+const long interval = 50; 
+
+// Bouncing of Rotary Encoder Buttons
 Bounce button0 = Bounce(SW[0], 15);
 Bounce button1 = Bounce(SW[1], 15);
 Bounce button2 = Bounce(SW[2], 15);
 Bounce button3 = Bounce(SW[3], 15);
 
-static int8_t val[4] = {0, 0, 0, 0};
-
-unsigned long previousMillis = 0;
-const long interval = 50; 
-
-
 void fft_update(){ 
+    // Function: Reading new FFT Parameters 
     if (i == 2 || i == -1){
         level[0] =  fft1024.read(1,4);
         level[1] =  fft1024.read(5,8);
@@ -38,6 +41,7 @@ void fft_update(){
 }
 
 void encoder_start(){
+    // Function: Initialsing Rotary Encoders with PIN-Variables
     pinMode(CLK[0],INPUT_PULLUP);
     pinMode(CLK[1],INPUT_PULLUP);
     pinMode(CLK[2],INPUT_PULLUP);
@@ -53,6 +57,9 @@ void encoder_start(){
 }
 
 int8_t encoder_init(uint16_t &store, uint8_t &prevNextCode,int CLK, int DATA){
+    // Function: Debouncing KY-040 with Quadrature Phase Encoding
+    // Credit: John Main
+    // Source: https://www.best-microcontroller-projects.com/rotary-encoder.html 
     static int8_t rot_enc_table[] = {0,1,1,0,1,0,0,1,1,0,0,1,0,1,1,0};
     prevNextCode <<= 2;
     if (digitalRead(DATA)) prevNextCode |= 0x02;
@@ -62,7 +69,7 @@ int8_t encoder_init(uint16_t &store, uint8_t &prevNextCode,int CLK, int DATA){
     if  (rot_enc_table[prevNextCode] ) {
     store <<= 4;
     store |= prevNextCode;
-    
+
     if ((store&0xff)==0x2b) return -1;
     if ((store&0xff)==0x17) return 1;
     }
@@ -71,6 +78,7 @@ int8_t encoder_init(uint16_t &store, uint8_t &prevNextCode,int CLK, int DATA){
    }
 
 int8_t encoder_update(){
+    // Function: Updating Rotary Encoder changes and FFT Values
       unsigned long currentMillis = millis();
     if (currentMillis - previousMillis >= interval) {
         previousMillis = currentMillis;

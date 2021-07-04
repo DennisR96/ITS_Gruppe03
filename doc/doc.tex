@@ -6,14 +6,14 @@
 \graphicspath{ {./images/} }
 
 \title{Projektdokumentation: Frequenz-Analyse und Hall}        % Titel
-\author{David Yaman, Dennis Räk}            % Author
-\date{IT-Systeme: SS 2021}                    % Datum/Kurs
+\author{David Yaman, Dennis Räk [2385799]}            % Author
+\date{HAW HAMBURG -- IT-Systeme -- SS 2021}                    % Datum/Kurs
 
 \pagestyle{fancy}                           % eigener Seitenstil
 \fancyhf{}                                  % alle Kopf- und Fußzeilenfelder bereinigen
 \fancyhead[L]{ITS SS 2021}                  % Header links
 \fancyhead[C]{}                             % Header Mitte
-\fancyhead[R]{David Yaman, Dennis Räk}      % Header rechts
+\fancyhead[R]{David Yaman, Dennis Räk [2385799]}      % Header rechts
 \renewcommand{\headrulewidth}{0.4pt}        % Trennlinie (Oben)
 \fancyfoot[C]{\thepage}                     % Seitennummer
 \renewcommand{\footrulewidth}{0.4pt}        % Trennlinie (Unten)
@@ -25,11 +25,25 @@
 \tableofcontents
 \newpage
 \section{Konzept}
-Das Projekt ist ein Hallgerät mit eingebauter Frequenzanalyse. Über einen Teensy Microcontroller
+Das Projekt ist ein Hallgerät mit eingebauter Frequenzanalyse. Für die Signalverarbeitung wird ein 
+Teensy 4.1 Microcontroller mit Audio-Board Adapter verwendet. Dieses System lässt sich über 4 Drehencoder einstellen.
+Für die Darstellung eines GUI wird ein LCD Monitor benutzt. Das fertige Gerät ist auf einer Lochrasterplattine befestigt und in 
+ein Gehäuse integriert. Ein- und Ausgang des Audio-Signals erfolgt über am Audio-Board befestigte Cinch-Buxen. Bei dem Hall ist es möglich
+Dämpfung, Raumgröße, Dry/Wet sowie Low-Cut und High-Cut einzustellen. In einem separaten Menü-Punkt lässt sich das Ausgangssignal per Frequenzanalyse beobachten.
 \section{Funktionen}
 Beim Start des Programmes erscheint ein kleines Intro
 \section{Umsetzung}
 \subsection{Hardware}
+Übersicht der im Projekt verwendeten Hardware:
+\begin{itemize}
+    \item 1x Teensy 4.1 Development Board
+    \item 1x Teensy Audio Adaptor Rev D
+    \item 1x 2.8 Zoll TFT Display (ILI9341)
+    \item 4x KY-040 Drehencoder
+    \item 1x Lochrasterplattine
+\end{itemize}
+Übersicht:
+- Audio Adaptor 
 \newpage
 \section{Umsetzung im Programmcode}
 \subsection{main.cpp}
@@ -51,7 +65,7 @@ Nach diesem Muster funktionieren Menüpunkte, Parameter sowie FFT. Beim Start de
 
 \subsection{Encoding.h}
 Die Encoding Bibliothek ist einer der wichtigsten Teile des Codes, da eine Bedienung ohne funktionierende Encoder nicht möglich ist. Um akkurate Veränderung am Encoder wahrzunehmen, 
-müssen diese Entprellt werden. Bei der Wahl einer geeigneten Entprellung zeigte sich das Quadrature Phase Shift Encoding von John Main gute Ergebnisse. Mit hoher Genauigkeit lassen sich 
+müssen diese Entprellt werden. Bei der Wahl einer geeigneten Entprellung zeigte das Quadrature Phase Shift Encoding von John Main gute Ergebnisse. Mit hoher Genauigkeit lassen sich 
 kleine Veränderung am Encoder als +1 oder -1 wahrnehmen. Über die im Loop eingebettete encoder update Funktion wird eine Änderung am Encoder erkannt und in Form einer In- oder Decrementation an die Control 
 Bibliothek weitergegeben. Die Knöpfe der Encoder werden durch die Bounce Library entprellt und ebenfalls über die Update Funktion überwacht.   
 \subsection{Shield.h}

@@ -1,3 +1,4 @@
+// Variables: Parameters
 float p_reverb[2] = {0, 0};                                     // Damping, Room
 float p_filter[2] = {400, 12000};                               // Low Cut, N/A, High Cut
 float wet = 0;
@@ -6,8 +7,8 @@ int i = 0;
 int button2_i = 0;
 float level[15];
 
-void update_menu(int val)
-{
+void update_menu(int val){
+    //Function: Change Menu Points with Encoder A
     i = i + val;
     i = i % 3;
     switch (i)
@@ -32,8 +33,8 @@ void update_menu(int val)
     Serial.println(i);
 }
 
-void update_p1(float val)
-{
+void update_p1(float val){
+    // Function: Change Parameter 1 with Encoder B
     switch (i)
     {
     case 0:
@@ -70,8 +71,8 @@ void update_p1(float val)
     }
 }
 
-void update_p2(float val)
-{
+void update_p2(float val){
+    // Function: Change Parameter 2 with Encoder C
     wet = wet + val;
     wet = (wet < 0) ? 0 : wet;   
     wet = (wet > 100) ? 100 : wet;    
@@ -97,8 +98,8 @@ void update_p2(float val)
     }
 }
 
-void update_p3(float val)
-{
+void update_p3(float val){
+    // Function: Change Parameter 3 with Encoder D
     switch (i)
     {
     case 0:
