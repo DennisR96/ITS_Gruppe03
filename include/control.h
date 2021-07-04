@@ -8,7 +8,7 @@ float wet_old;
 
 // Variables: Menu & FFT
 int i = 0;
-float level[14];
+float level[15];
 
 void update_menu(int val){
     //Function: Change Menu Points with Encoder A
@@ -38,6 +38,7 @@ void update_menu(int val){
 
 void update_p1(float val){
     // Function: Change Parameter 1 with Encoder B
+    Serial.print(i);
     switch (i)
     {
     case 0:
@@ -103,6 +104,7 @@ void update_p2(float val){
 
 void update_p3(float val){
     // Function: Change Parameter 3 with Encoder D
+    Serial.print(i);
     switch (i)
     {
     case 0:
