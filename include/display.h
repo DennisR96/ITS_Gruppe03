@@ -1,7 +1,4 @@
-#include "SPI.h"
-#include "ILI9341_t3.h"
-#include "font_Arial.h"
-
+// Variables: Display PIN
 #define TFT_DC       9
 #define TFT_CS      10
 #define TFT_RST    255
@@ -13,17 +10,15 @@ class Menu {
     ILI9341_t3 tft = ILI9341_t3(TFT_CS, TFT_DC, TFT_RST, TFT_MOSI, TFT_SCLK, TFT_MISO);
     public:
         void start(){
+            // Function: Display Introduction Screen
             tft.begin();
-
             tft.fillScreen(ILI9341_WHITE);              
             tft.setRotation(3);
             tft.setTextSize(3);
             tft.setTextColor(ILI9341_BLACK);
             tft.setCursor(90, 90);
             tft.print("Frequency \n     Analysis \n     & Reverb");
-
             delay(1000);
-
             tft.fillScreen(ILI9341_BLACK);              
             tft.setRotation(3);
             tft.setTextSize(3);
@@ -37,9 +32,11 @@ class Menu {
             delay(1000);
         }
         void clear(){
+            // Function: Clear Display Screen
             tft.fillScreen(ILI9341_BLACK);
         }
         void rect(){
+            // Function: Create Rectangle on Screen
             tft.setRotation(0);
             tft.fillRect(0, 0, 60, 320, ILI9341_WHITE);
             tft.drawRect(60, 0, 90, 320, ILI9341_WHITE);
@@ -64,34 +61,10 @@ class Menu {
             tft.fillRect(155, 218, 80, 95, ILI9341_BLACK);                   
         }
 
-        void fft_update(float level[]){
-            
-              for (int i = 0; i<16; i++){
-                level[i] = level[i] * 500;
-                Serial.println(i);
-                Serial.println(level[i]);
-            }
-            tft.setRotation(1);
-            tft.fillRect(0, 18, 350, 140, ILI9341_BLACK);
-            tft.setCursor(0, 225);
-            tft.fillRect(285, 20, 10, level[0], ILI9341_PURPLE);
-            tft.fillRect(265, 20, 10, level[1], ILI9341_PURPLE);
-            tft.fillRect(245, 20, 10, level[2], ILI9341_PURPLE);
-            tft.fillRect(225, 20, 10, level[3], ILI9341_PURPLE);
-            tft.fillRect(205, 20, 10, level[4], ILI9341_BLUE);
-            tft.fillRect(185, 20, 10, level[5], ILI9341_BLUE);
-            tft.fillRect(165, 20, 10, level[6], ILI9341_BLUE);
-            tft.fillRect(145, 20, 10, level[7], ILI9341_BLUE);
-            tft.fillRect(125, 20, 10, level[8], ILI9341_BLUE);
-            tft.fillRect(105, 20, 10, level[9], ILI9341_BLUE);
-            tft.fillRect(85, 20, 10, level[10], ILI9341_RED);
-            tft.fillRect(65, 20, 10, level[11], ILI9341_RED);
-            tft.fillRect(45, 20, 10, level[12], ILI9341_RED);
-            tft.fillRect(25, 20, 10, level[13], ILI9341_RED);
-            tft.fillRect(5, 20, 10, level[14], ILI9341_RED);
-        }
+        
 
         void fft(){
+            // Function: Create FFT Menu
             tft.fillScreen(ILI9341_BLACK);
             tft.setRotation(0);
             tft.fillRect(0, 0, 60, 320, ILI9341_WHITE);
@@ -116,6 +89,7 @@ class Menu {
             tft.setRotation(0);
         }
         void reverb(){
+            // Function: Create Reverb Menu
             clear();
             rect();
             tft.setRotation(3);
@@ -135,47 +109,64 @@ class Menu {
         }
 
         void filter(){
+            // Function: Create Filter Menu
             clear();
             rect();
-
             tft.setRotation(3);
             tft.setTextColor(ILI9341_WHITE); 
             tft.setCursor(0, 90);
             tft.print("      Filter");
-
             tft.setTextSize(2);
             tft.setCursor(13, 160);
             tft.print("L-Cut");
             tft.setCursor(120, 160);
             tft.print("Wet");
-            
             tft.setCursor(225, 160);
             tft.print("H-Cut");
             tft.setTextSize(3);
         }
         
         void update_p(int p1, int p2, int p3){
+            // Function: Update Parameter
             tft.setTextSize(2);
-            
             tft.setCursor(13, 200);
             tft.fillRect(5,180, 90,50, ILI9341_BLACK);
             tft.print(p1);
-            
             tft.setCursor(120, 200);
             tft.fillRect(115,180, 90,50, ILI9341_BLACK);
             tft.print(p2);
-            
             tft.setCursor(225, 200);
             tft.fillRect(220,180, 90,50, ILI9341_BLACK);
-            tft.print(p3);
-            
+            tft.print(p3); 
             tft.setTextSize(3);
-
         }
-
         
-
-
+        void update_fft(float level[]){
+            // Function: Update FFT on Screen
+            //   for (int i = 0; i<16; i++){
+            //     level[i] = level[i] * 500;
+            //     Serial.println(i);
+            //     Serial.println(level[i]);
+            // }
+            tft.setRotation(1);
+            tft.fillRect(0, 18, 350, 140, ILI9341_BLACK);
+            tft.setCursor(0, 225);
+            tft.fillRect(285, 20, 10, level[0], ILI9341_PURPLE);
+            tft.fillRect(265, 20, 10, level[1], ILI9341_PURPLE);
+            tft.fillRect(245, 20, 10, level[2], ILI9341_PURPLE);
+            tft.fillRect(225, 20, 10, level[3], ILI9341_PURPLE);
+            tft.fillRect(205, 20, 10, level[4], ILI9341_BLUE);
+            tft.fillRect(185, 20, 10, level[5], ILI9341_BLUE);
+            tft.fillRect(165, 20, 10, level[6], ILI9341_BLUE);
+            tft.fillRect(145, 20, 10, level[7], ILI9341_BLUE);
+            tft.fillRect(125, 20, 10, level[8], ILI9341_BLUE);
+            tft.fillRect(105, 20, 10, level[9], ILI9341_BLUE);
+            tft.fillRect(85, 20, 10, level[10], ILI9341_RED);
+            tft.fillRect(65, 20, 10, level[11], ILI9341_RED);
+            tft.fillRect(45, 20, 10, level[12], ILI9341_RED);
+            tft.fillRect(25, 20, 10, level[13], ILI9341_RED);
+            tft.fillRect(5, 20, 10, level[14], ILI9341_RED);
+        }
 };
 
 Menu Display;
