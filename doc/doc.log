@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.6.30)  4 JUL 2021 14:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.6.30)  4 JUL 2021 14:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -139,11 +139,11 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (/Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/doc.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 5.
+(Font)              <12> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 5.
+(Font)              <8> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 5.
+(Font)              <6> on input line 4.
 )
 \tf@toc=\write3
 \openout3 = `doc.toc'.
@@ -165,7 +165,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 41--48
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 63--70
 
  []
 
@@ -176,11 +184,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4]
-<./images//AudioDesignTool.png, id=18, 915.42pt x 598.235pt>
+[5]
+<./images//AudioDesignTool.png, id=21, 915.42pt x 598.235pt>
 File: ./images//AudioDesignTool.png Graphic file (type png)
 <use ./images//AudioDesignTool.png>
-Package pdftex.def Info: ./images//AudioDesignTool.png  used on input line 62.
+Package pdftex.def Info: ./images//AudioDesignTool.png  used on input line 84.
 (pdftex.def)             Requested size: 390.0pt x 254.86267pt.
 
 
@@ -190,18 +198,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[5 </Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//AudioDesignTool.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 71--87
+[6 </Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//AudioDesignTool.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 93--109
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 71--87
+Underfull \hbox (badness 10000) in paragraph at lines 93--109
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 71--87
+Underfull \hbox (badness 10000) in paragraph at lines 93--109
 
  []
 
@@ -212,7 +220,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[6]
+[7]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -220,20 +228,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[7] (/Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/doc.aux) ) 
+[8] (/Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/doc.aux) ) 
 Here is how much of TeX's memory you used:
  2688 strings out of 478994
  41331 string characters out of 5858184
- 350662 words of memory out of 5000000
+ 351662 words of memory out of 5000000
  20150 multiletter control sequences out of 15000+600000
  408598 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,11n,78p,295b,212s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on "/Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/doc.pdf" (7 pages, 247734 bytes).
+Output written on "/Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/doc.pdf" (8 pages, 251861 bytes).
 PDF statistics:
- 43 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
+ 46 PDF objects out of 1000 (max. 8388607)
+ 30 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
