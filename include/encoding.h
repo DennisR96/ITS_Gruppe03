@@ -35,21 +35,17 @@ void fft_update(){
         level[14] = fft1024.read(387, 511);
         Display.fft_update(level);
     }       
-        
 }
-
 
 void encoder_start(){
     pinMode(CLK[0],INPUT_PULLUP);
     pinMode(CLK[1],INPUT_PULLUP);
     pinMode(CLK[2],INPUT_PULLUP);
     pinMode(CLK[3],INPUT_PULLUP);
-
     pinMode(DATA[0],INPUT_PULLUP);
     pinMode(DATA[1],INPUT_PULLUP);
     pinMode(DATA[2],INPUT_PULLUP);
     pinMode(DATA[3],INPUT_PULLUP);
-
     pinMode(SW[0],INPUT_PULLUP);
     pinMode(SW[1],INPUT_PULLUP);
     pinMode(SW[2],INPUT_PULLUP);
@@ -102,31 +98,13 @@ int8_t encoder_update(){
     button2.update();
     button3.update();
 
-    if (button0.fallingEdge()) {
+    if (button0.risingEdge()) {
         Serial.println("Reverb zurückgesetzt");
-        p_reverb[2] = {0, 0}; 
     } 
     if (button1.fallingEdge()) {
         Serial.println("Filter zurückgesetzt");
-        p_filter[2] = {400, 12000};
     } 
     if (button2.fallingEdge()) {
-        Serial.println("Wet 100%");
-        wet = 0;
-        mixer1.gain(0,wet/100);
-        mixer1.gain(1,wet/100);
-        mixer1.gain(2,1-(wet/100));
-        mixer1.gain(3,1-(wet/100));
-        
-    } 
-    if (button3.fallingEdge()) {
-        Serial.println("Dry 100%");
-        wet = 100;
-        
-        mixer1.gain(0,wet/100);
-        mixer1.gain(1,wet/100);
-        mixer1.gain(2,1-(wet/100));
-        mixer1.gain(3,1-(wet/100));
     } 
     return 0;
    }

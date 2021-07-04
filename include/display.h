@@ -1,7 +1,3 @@
-#include "SPI.h"
-#include "ILI9341_t3.h"
-#include "font_Arial.h"
-
 #define TFT_DC       9
 #define TFT_CS      10
 #define TFT_RST    255
