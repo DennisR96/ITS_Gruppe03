@@ -1,10 +1,13 @@
-// Variables: Parameters
+// Variables: FX Parameters
 float p_reverb[2] = {0, 0};                                     // Damping, Room
 float p_filter[2] = {400, 12000};                               // Low Cut, N/A, High Cut
+
+// Variables: Dry/Wet
 float wet = 0;
 float wet_old;
+
+// Variables: Menu & FFT
 int i = 0;
-int button2_i = 0;
 float level[15];
 
 void update_menu(int val){
@@ -60,13 +63,13 @@ void update_p1(float val){
         break;
     case -1:
     case 2: 
-        p_filter[0] = p_filter[0] + val*100;
-        p_filter[0] = (p_filter[0] < 400) ? 400 : p_filter[0];   
-        p_filter[0] = (p_filter[0] > 12000) ? 12000 : p_filter[0];
-        Serial.println("L-Cut:");
-        Serial.println(p_filter[0]);
-        biquad1.setHighpass(0, p_filter[0], 0.707);
-        biquad2.setHighpass(0, p_filter[0], 0.707);
+        // p_filter[0] = p_filter[0] + val*100;
+        // p_filter[0] = (p_filter[0] < 400) ? 400 : p_filter[0];   
+        // p_filter[0] = (p_filter[0] > 12000) ? 12000 : p_filter[0];
+        // Serial.println("L-Cut:");
+        // Serial.println(p_filter[0]);
+        // biquad1.setHighpass(0, p_filter[0], 0.707);
+        // biquad2.setHighpass(0, p_filter[0], 0.707);
         break;
     }
 }
@@ -125,13 +128,13 @@ void update_p3(float val){
         break;
     case -1: 
     case 2:
-        p_filter[1] = p_filter[1] - val*100;
-        p_filter[1] = (p_filter[1] < 1200) ? 1200 : p_filter[1];   
-        p_filter[1] = (p_filter[1] > 12000) ? 12000 : p_filter[1];
-        Serial.println("High Cut: ");
-        Serial.println(p_filter[1]);
-        biquad1.setLowpass(1, p_filter[1], 0.707);
-        biquad2.setLowpass(1, p_filter[1], 0.707);
+        // p_filter[1] = p_filter[1] - val*100;
+        // p_filter[1] = (p_filter[1] < 1200) ? 1200 : p_filter[1];   
+        // p_filter[1] = (p_filter[1] > 12000) ? 12000 : p_filter[1];
+        // Serial.println("High Cut: ");
+        // Serial.println(p_filter[1]);
+        // biquad1.setLowpass(1, p_filter[1], 0.707);
+        // biquad2.setLowpass(1, p_filter[1], 0.707);
         break;
     }
 }

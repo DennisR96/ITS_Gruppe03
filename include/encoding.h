@@ -36,7 +36,7 @@ void fft_update(){
         level[12] = fft1024.read(263, 324);
         level[13] = fft1024.read(325, 386);
         level[14] = fft1024.read(387, 511);
-        Display.fft_update(level);
+        Display.update_fft(level);
     }       
 }
 
@@ -85,19 +85,19 @@ int8_t encoder_update(){
         fft_update();
         currentMillis = 0;
     }
-    if (val[0]=encoder_init(store[0], prevNextCode[0], CLK[0], DATA[0]) ) {
+    if ((val[0]=encoder_init(store[0], prevNextCode[0], CLK[0], DATA[0]))) {
         update_menu(val[0]);
         }
 
-    if(val[1]=encoder_init(store[1], prevNextCode[1], CLK[1], DATA[1])) {
+    if((val[1]=encoder_init(store[1], prevNextCode[1], CLK[1], DATA[1]))) {
         update_p1(val[1]);
     }
 
-    if(val[2]=encoder_init(store[2], prevNextCode[2], CLK[2], DATA[2])) {
+    if((val[2]=encoder_init(store[2], prevNextCode[2], CLK[2], DATA[2]))) {
          update_p2(val[2]);
     }
 
-    if(val[3]=encoder_init(store[3], prevNextCode[3], CLK[3], DATA[3])) {
+    if((val[3]=encoder_init(store[3], prevNextCode[3], CLK[3], DATA[3]))) {
          update_p3(val[3]);
     }
 
