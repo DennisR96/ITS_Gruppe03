@@ -106,14 +106,21 @@ int8_t encoder_update(){
     button2.update();
     button3.update();
 
-    if (button0.risingEdge()) {
-        Serial.println("Reverb zurückgesetzt");
-    } 
     if (button1.fallingEdge()) {
-        Serial.println("Filter zurückgesetzt");
+        Serial.println("Parameter A zurückgesetzt");
+        reset_p1();
     } 
     if (button2.fallingEdge()) {
+        Serial.println("Paramter B zurückgesetzt");
+        reset_p2();
     } 
+    if (button3.fallingEdge()) {
+        Serial.println("Parameter C zurückgesetzt");
+       reset_p3(); 
+
+    } 
+    
+   
     return 0;
    }
 

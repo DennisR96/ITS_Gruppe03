@@ -4,11 +4,12 @@ float p_filter[2] = {400, 12000};                               // Low Cut, N/A,
 
 // Variables: Dry/Wet
 float wet = 0;
-float wet_old;
+float wet_old = 0;
 
 // Variables: Menu & FFT
 int i = 0;
 float level[15];
+
 
 void update_menu(int val){
     //Function: Change Menu Points with Encoder A
@@ -75,6 +76,29 @@ void update_p1(float val){
     }
 }
 
+void reset_p1(){
+    switch(i)
+    {
+        case 0:
+            p_reverb[0] = 0;
+            freeverb1.damping(p_reverb[0]);
+            freeverb2.damping(p_reverb[0]);
+            Serial.println("Damping: ");
+            Serial.println(p_reverb[0]);
+            Display.update_p(p_reverb[0], wet, p_reverb[1]);
+            break;
+        case -2:
+        case 1:
+            p_filter[0] = 400;
+            Serial.println("L-Cut:");
+            Serial.println(p_filter[0]);
+            biquad1.setHighpass(0, p_filter[0], 0.707);
+            biquad2.setHighpass(0, p_filter[0], 0.707);
+            Display.update_p(p_filter[0], wet, p_filter[1]);
+            break;
+    }
+}
+
 void update_p2(float val){
     // Function: Change Parameter 2 with Encoder C
     wet = wet + val;
@@ -101,6 +125,27 @@ void update_p2(float val){
         break;
     }
 }
+
+void reset_p2(){
+    if (wet_old == 0){
+        wet_old = wet;
+        wet = 0;
+    }
+    else if (wet_old != 0){
+        wet = wet_old;
+        wet_old = 0;
+    }
+    switch(i){
+        case 0:
+            Display.update_p(p_reverb[0], wet, p_reverb[1]);
+            break;  
+        case -2:
+        case 1:
+            Display.update_p(p_filter[0], wet, p_filter[1]);
+            break;
+    }
+}
+
 
 void update_p3(float val){
     // Function: Change Parameter 3 with Encoder D
@@ -138,5 +183,27 @@ void update_p3(float val){
         biquad1.setLowpass(1, p_filter[1], 0.707);
         biquad2.setLowpass(1, p_filter[1], 0.707);
         break;
+    }
+}
+
+void reset_p3(){
+    switch(i)
+    {
+        case 0:
+            p_reverb[1] = 0;
+            Serial.println("Room: ");
+            Serial.println(p_reverb[1]);
+            freeverb1.roomsize(p_reverb[1]);
+            freeverb2.roomsize(p_reverb[1]);
+            Display.update_p(p_reverb[0], wet, p_reverb[1]);
+            break;
+        case -2:
+        case 1:
+            p_filter[1] = 1200;
+            Serial.println("High Cut: ");
+            Serial.println(p_filter[1]);
+            biquad1.setLowpass(1, p_filter[1], 0.707);
+            biquad2.setLowpass(1, p_filter[1], 0.707);
+            break;
     }
 }
