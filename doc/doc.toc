@@ -2,11 +2,10 @@
 \contentsline {section}{\numberline {1}Konzept}{3}{}%
 \contentsline {section}{\numberline {2}Funktionen}{3}{}%
 \contentsline {subsection}{\numberline {2.1}Halleffekt}{3}{}%
-\contentsline {subsection}{\numberline {2.2}Low-/High-Cut}{4}{}%
+\contentsline {subsection}{\numberline {2.2}Low-/High-Cut}{3}{}%
 \contentsline {subsection}{\numberline {2.3}Frequenzspektrum (FFT)}{4}{}%
 \contentsline {section}{\numberline {3}Umsetzung}{4}{}%
 \contentsline {subsection}{\numberline {3.1}GUI}{4}{}%
-\contentsline {subsection}{\numberline {3.2}Hardware}{4}{}%
 \contentsline {section}{\numberline {4}Umsetzung im Programmcode}{6}{}%
 \contentsline {subsection}{\numberline {4.1}main.cpp}{6}{}%
 \contentsline {subsection}{\numberline {4.2}Control.h}{6}{}%
