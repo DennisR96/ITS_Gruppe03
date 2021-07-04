@@ -8,7 +8,7 @@ float wet_old;
 
 // Variables: Menu & FFT
 int i = 0;
-float level[15];
+float level[14];
 
 void update_menu(int val){
     //Function: Change Menu Points with Encoder A

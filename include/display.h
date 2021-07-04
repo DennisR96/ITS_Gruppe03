@@ -112,18 +112,15 @@ class Menu {
             // Function: Create Filter Menu
             clear();
             rect();
-
             tft.setRotation(3);
             tft.setTextColor(ILI9341_WHITE); 
             tft.setCursor(0, 90);
             tft.print("      Filter");
-
             tft.setTextSize(2);
             tft.setCursor(13, 160);
             tft.print("L-Cut");
             tft.setCursor(120, 160);
             tft.print("Wet");
-            
             tft.setCursor(225, 160);
             tft.print("H-Cut");
             tft.setTextSize(3);
@@ -132,21 +129,16 @@ class Menu {
         void update_p(int p1, int p2, int p3){
             // Function: Update Parameter
             tft.setTextSize(2);
-            
             tft.setCursor(13, 200);
             tft.fillRect(5,180, 90,50, ILI9341_BLACK);
             tft.print(p1);
-            
             tft.setCursor(120, 200);
             tft.fillRect(115,180, 90,50, ILI9341_BLACK);
             tft.print(p2);
-            
             tft.setCursor(225, 200);
             tft.fillRect(220,180, 90,50, ILI9341_BLACK);
-            tft.print(p3);
-            
+            tft.print(p3); 
             tft.setTextSize(3);
-
         }
         
         void update_fft(float level[]){
