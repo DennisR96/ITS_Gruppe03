@@ -207,11 +207,12 @@ void reset_p3(){
             break;
         case -2:
         case 1:
-            p_filter[1] = 1200;
+            p_filter[1] = 12000;
             Serial.println("High Cut: ");
             Serial.println(p_filter[1]);
             biquad1.setLowpass(1, p_filter[1], 0.707);
             biquad2.setLowpass(1, p_filter[1], 0.707);
+            Display.update_p(p_filter[0], wet, p_filter[1]); 
             break;
     }
 }
