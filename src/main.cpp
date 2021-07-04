@@ -2,9 +2,9 @@
 #include <Arduino.h>
 #include <Audio.h>
 #include <Bounce.h>
-#include "ILI9341_t3.h"
 #include <SPI.h>
 #include <Wire.h>
+#include "ILI9341_t3.h"
 
 // Program Library
 #include "shield.h"
