@@ -127,7 +127,7 @@ void update_p2(float val){
 }
 
 void reset_p2(){
-    if (wet_old == 0){
+    if (wet != 0){
         wet_old = wet;
         wet = 0;
     }
@@ -135,9 +135,10 @@ void reset_p2(){
         wet = wet_old;
         wet_old = 0;
     }
-    Serial.println("Dry/Wet");
-    Serial.println(wet/100);
-    Serial.println(1-(wet/100));
+    Serial.println("Wet: ");
+    Serial.println(wet);
+    Serial.println("Wet_Old: ");
+    Serial.print(wet_old);
     mixer1.gain(0,wet/100);
     mixer1.gain(1,wet/100);
     mixer1.gain(2,1-(wet/100));
