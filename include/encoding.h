@@ -10,7 +10,7 @@ static int8_t val[4] = {0, 0, 0, 0};
 
 // Variables: FFT Update Timer 
 unsigned long previousMillis = 0;
-const long interval = 50; 
+const long interval = 75; 
 
 // Bouncing of Rotary Encoder Buttons
 Bounce button0 = Bounce(SW[0], 15);

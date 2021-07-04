@@ -143,11 +143,14 @@ class Menu {
         
         void update_fft(float level[]){
             // Function: Update FFT on Screen
-            //   for (int i = 0; i<16; i++){
-            //     level[i] = level[i] * 500;
-            //     Serial.println(i);
-            //     Serial.println(level[i]);
-            // }
+               for (int i = 0; i<15; i++){
+                 level[i] = level[i] * 950;
+                 if (level[i]>=130){
+                     level[i]=130;
+                 }
+                 Serial.println(i);
+                 Serial.println(level[i]);
+             }
             tft.setRotation(1);
             tft.fillRect(0, 18, 350, 140, ILI9341_BLACK);
             tft.setCursor(0, 225);
