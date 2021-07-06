@@ -28,7 +28,7 @@
 Das entwickelte Gerät ist ein Hall-Effektgerät mit zusätzlicher Monitoring-Möglichkeit über Betrachtung des Frequenzspektrums des Ausgangssignals. 
 Informationen über die Funktionsweise und Parameter werden über ein LCD Display dargestellt und können mit Hilfe von vier Dreh-Encodern angepasst werden. 
 Der Halleffekt hat die Parameter Room und Damping. Zusätzlich begrenzen Filtermodule das verhallte Signal im Frequenzbereich. 
-Die variablen Grenzfrequenzen sind auch während Darstellung des Frequenzspektrums veränderbar, um neben auditiver auch visuelle Kontrolle zu ermöglichen. 
+Die variablen Grenzfrequenzen sind auch während der Darstellung des Frequenzspektrums veränderbar, um neben auditiver auch visuelle Kontrolle zu ermöglichen. 
 Der bandbegrenzte Hallanteil im Ausgangssignal lässt sich über Dry/Wet Kontrollieren.
 \section{Funktionen}
 Die realisierten Funktionen umfassen einen Halleffekt, Low-/High-Cut und ein visualisiertes Frequenzspektrum des manipulierten Signals. 
@@ -36,20 +36,18 @@ Die Funktionen werden als einzelne Menüpunkte dargestellt und können mit Hilfe
 Encoder B, C und D steuern die Effekt- und Filterparameter, die per Knopfdruck auf ihren Ursprungswert zurücksetzbar sind.
 \subsection{Halleffekt}
 Der Halleffekt wird nach Start als Menüpunkt Eins angezeigt. 
-Hier lassen sich die Parameter Room und Damping, mit Encoder B und D anpassen. 
-Zusätzlich kann der bandbegrenzte Hallanteil im Ausgangssignal mit Dry/Wet über Encoder C kontrolliert werden.
+Hier lassen sich die Parameter Room und Damping anpassen.
+Zusätzlich kann der bandbegrenzte Hallanteil im Ausgangssignal mit Dry/Wet kontrolliert werden.
 \subsection{Low-/High-Cut}
 Low- und High-Cut sind im Routing hinter dem Halleffekt angesiedelt und werden im Menü als zweites dargestellt. 
-Das verhallte Signal wird automatisch bandbegrenzt. 
-Die Start-Grenzfrequenz des Low-Cuts beträgt 400 Hz, die des High-Cuts 12kHz. 
-Mit Encoder B und D können in diesem Menüpunkt die Grenzfrequenzen verschoben werden. 
-Mit Encoder C lässt sich weiterhin der bandbegrenzte Hallanteil im Ausganssignal kontrollieren. 
+Das verhallte Signal wird automatisch bandbegrenzt.  
+Hier können die Grenzfrequenzen verschoben werden. 
+Zudem lässt sich weiterhin der bandbegrenzte Hallanteil im Ausganssignal kontrollieren. 
 \subsection{Frequenzspektrum (FFT)}
 Menüpunkt Drei ist eine Darstellung des Ausgangssignals im Frequenzbereich. 
 Der hörbare Frequenzbereich wird in 15 Balken aufgeteilt. Die Aufteilung orientiert sich an dem Hörverhalten des Menschen. 
 Daher sind hohe Frequenzen breiter zusammengefasst als tiefe. 
-Balken Eins bis Vier stellen Frequenzen von 40 bis 860 Hz dar, Fünf bis Zehn Frequenzen von 860 bis 8,6 kHz und Elf bis Fünfzehn Frequenzen von 8,6 kHz bis 22 kHz.
-Encoder B, C und D sind auf dieselbe Weise belegt wie in Menüpunkt Zwei.
+Es können weiterhin die selben Parameter wie in Menüpunkt Zwei angepasst werden.
 \newpage
 \section{Umsetzung}
 Die Umsetzung erfolgt mit Hilfe eines Teensy 4.1 Microcontrollers mit Audioboard, einem Display und vier Dreh-Encodern.
@@ -60,7 +58,8 @@ Das Userinterface ist in drei Menüpunkte aufgeteilt. Menüpunkt Eins gehört zu
 Das untere Drittel des Displays ist in drei Kästen aufgeteilt die von links nach rechts Damping, Dry/Wet und Room und die jeweiligen Werte anzeigen. 
 Damping und Room werden von 0 – 100, Dry/Wet von 0\% - 100\% angezeigt. Der Aufbau von Menüpunkt Zwei ist gleich, Mittig wird \glq Filter\grq{}\: angezeigt. 
 Die Parameter umfassen von links nach rechts Low-Cut, Dry/Wet und High-Cut. Low-Cut läuft zwischen 400 Hz und 12 kHz, High-Cut zwischen 12 kHz und 1,2 kHz, in einer Schrittweite von 100 Hz. 
-Menüpunkt Drei zeigt die Frequenzanalyse an. Hier werden 15 Frequenzbänder mit ihrer momentanen Aussteuerung im Ausgangssignal angezeigt. Die Encoder sind gleich wie in Menüpunkt Zwei belegt.
+Menüpunkt Drei zeigt die Frequenzanalyse an. Hier werden 15 Frequenzbänder mit ihrer momentanen Aussteuerung im Ausgangssignal in Form von Balken angezeigt. Balken Eins bis Vier stellen Frequenzen von 40 bis 860 Hz dar, Fünf bis Zehn Frequenzen von 860 bis 8,6 kHz und Elf bis Fünfzehn Frequenzen von 8,6 kHz bis 22 kHz.
+Die Encoder sind gleich wie in Menüpunkt Zwei belegt.
 Die Ansteuerung erfolgt über die Encoder nach folgendem Schema:
 \\
 \\
