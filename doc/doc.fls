@@ -235,7 +235,9 @@ OUTPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/doc.pdf
 INPUT /usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
-OUTPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/doc.toc
+INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/doc.toc
+INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/doc.toc
+INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/doc.toc
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
@@ -245,7 +247,18 @@ INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
+OUTPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/doc.toc
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//ITS_KomplettesGeraet.jpg
+INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//ITS_KomplettesGeraet.jpg
+INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//ITS_KomplettesGeraet.jpg
+INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//ITS_KomplettesGeraet.jpg
+INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//ITS_KomplettesGeraet.jpg
+INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//ITSMenue.jpg
+INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//ITSMenue.jpg
+INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//ITSMenue.jpg
+INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//ITSMenue.jpg
+INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//ITSMenue.jpg
 INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//AudioDesignTool.png
 INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//AudioDesignTool.png
 INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//AudioDesignTool.png

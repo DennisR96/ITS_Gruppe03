@@ -1,10 +1,10 @@
 \babel@toc {ngerman}{}
 \contentsline {section}{\numberline {1}Konzept}{3}{}%
 \contentsline {section}{\numberline {2}Funktionen}{3}{}%
-\contentsline {subsection}{\numberline {2.1}Halleffekt}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Hall-Effekt}{3}{}%
 \contentsline {subsection}{\numberline {2.2}Low-/High-Cut}{3}{}%
 \contentsline {subsection}{\numberline {2.3}Frequenzspektrum (FFT)}{4}{}%
-\contentsline {section}{\numberline {3}Umsetzung}{5}{}%
+\contentsline {section}{\numberline {3}Umsetzung}{4}{}%
 \contentsline {subsection}{\numberline {3.1}GUI}{5}{}%
 \contentsline {subsection}{\numberline {3.2}Hardware und Schnittstellen}{6}{}%
 \contentsline {subsubsection}{\numberline {3.2.1}SGTL5000 Audioboard}{6}{}%
@@ -24,3 +24,4 @@
 \contentsline {subsection}{\numberline {4.2}Einbinden von Effekten}{11}{}%
 \contentsline {subsection}{\numberline {4.3}Verlust eines Teensy Boards}{11}{}%
 \contentsline {section}{\numberline {5}Fazit}{12}{}%
+\contentsline {section}{\numberline {6}Quellen/Tools}{12}{}%

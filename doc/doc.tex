@@ -27,19 +27,20 @@
 \section{Konzept}
 Das entwickelte Gerät ist ein Hall-Effektgerät mit zusätzlicher Monitoring-Möglichkeit über Betrachtung des Frequenzspektrums des Ausgangssignals. 
 Informationen über die Funktionsweise und Parameter werden über ein LCD Display dargestellt und können mit Hilfe von vier Dreh-Encodern angepasst werden. 
-Der Halleffekt hat die Parameter Room und Damping. Zusätzlich begrenzen Filtermodule das verhallte Signal im Frequenzbereich. 
+Der Hall-Effekt hat die Parameter Room und Damping. Zusätzlich begrenzen Filtermodule das verhallte Signal im Frequenzbereich. 
 Die variablen Grenzfrequenzen sind auch während der Darstellung des Frequenzspektrums veränderbar, um neben auditiver auch visuelle Kontrolle zu ermöglichen. 
 Der bandbegrenzte Hallanteil im Ausgangssignal lässt sich über Dry/Wet Kontrollieren.
 \section{Funktionen}
-Die realisierten Funktionen umfassen einen Halleffekt, Low-/High-Cut und ein visualisiertes Frequenzspektrum des manipulierten Signals. 
+Die realisierten Funktionen umfassen einen Hall-Effekt, Low-/High-Cut und ein visualisiertes Frequenzspektrum des manipulierten Signals. 
+Das Signal lässt sich über Cinch-Buchsen einspeisen und über Cinch-Buchsen oder Klinke wieder abnehmen abnehmen.
 Die Funktionen werden als einzelne Menüpunkte dargestellt und können mit Hilfe des Encoders A durchblättert werden. 
 Encoder B, C und D steuern die Effekt- und Filterparameter, die per Knopfdruck auf ihren Ursprungswert zurücksetzbar sind.
-\subsection{Halleffekt}
-Der Halleffekt wird nach Start als Menüpunkt Eins angezeigt. 
+\subsection{Hall-Effekt}
+Der Hall-Effekt wird nach Start als Menüpunkt Eins angezeigt. 
 Hier lassen sich die Parameter Room und Damping anpassen.
 Zusätzlich kann der bandbegrenzte Hallanteil im Ausgangssignal mit Dry/Wet kontrolliert werden.
 \subsection{Low-/High-Cut}
-Low- und High-Cut sind im Routing hinter dem Halleffekt angesiedelt und werden im Menü als zweites dargestellt. 
+Low- und High-Cut sind im Routing hinter dem Hall-Effekt angesiedelt und werden im Menü als zweites dargestellt. 
 Das verhallte Signal wird automatisch bandbegrenzt.  
 Hier können die Grenzfrequenzen verschoben werden. 
 Zudem lässt sich weiterhin der bandbegrenzte Hallanteil im Ausganssignal kontrollieren. 
@@ -48,26 +49,25 @@ Menüpunkt Drei ist eine Darstellung des Ausgangssignals im Frequenzbereich.
 Der hörbare Frequenzbereich wird in 15 Balken aufgeteilt. Die Aufteilung orientiert sich an dem Hörverhalten des Menschen. 
 Daher sind hohe Frequenzen breiter zusammengefasst als tiefe. 
 Es können weiterhin die selben Parameter wie in Menüpunkt Zwei angepasst werden.
-\newpage
 \section{Umsetzung}
 Die Umsetzung erfolgt mit Hilfe eines Teensy 4.1 Microcontrollers mit Audioboard, einem Display und vier Dreh-Encodern.
 Für die Umsetzung wurden außerdem die Audio Library des Teensys, das GUI für Teensy Audioanwendungen, die Teensy optimierte ILI9341 Library und das Quadrature Phase Shift Encoding von John Main verwendet auf die später im Text näher eingegangen wird.
+\\
+\\
 \begin{figure}[h]
   \centering
-  \caption{Links: Gerät Vorderseite. Rechts: Gerät Rückseite}
-  \includegraphics[width=\textwidth]{ITS}
+  \includegraphics[width=\textwidth]{ITS_KomplettesGeraet.jpg}
+  \caption{Vorderseite Gerät, Rückseite Gerät (v.l.n.r.)}
 \end{figure}
+\newpage
 \subsection{GUI}
-Das Userinterface ist in drei Menüpunkte aufgeteilt. Menüpunkt Eins gehört zum Halleffekt. Mittig wird auf dem Bildschirm \glq Reverb\grq{}\: angezeigt. 
+Das Userinterface ist in drei Menüpunkte aufgeteilt. Menüpunkt Eins gehört zum Hall-Effekt. Mittig wird auf dem Bildschirm \glq Reverb\grq{}\: angezeigt. 
 Das untere Drittel des Displays ist in drei Kästen aufgeteilt die von links nach rechts Damping, Dry/Wet und Room und die jeweiligen Werte anzeigen. 
 Damping und Room werden von 0 – 100, Dry/Wet von 0\% - 100\% angezeigt. Der Aufbau von Menüpunkt Zwei ist gleich, Mittig wird \glq Filter\grq{}\: angezeigt. 
 Die Parameter umfassen von links nach rechts Low-Cut, Dry/Wet und High-Cut. Low-Cut läuft zwischen 400 Hz und 12 kHz, High-Cut zwischen 12 kHz und 1,2 kHz, in einer Schrittweite von 100 Hz. 
 Menüpunkt Drei zeigt die Frequenzanalyse an. Hier werden 15 Frequenzbänder mit ihrer momentanen Aussteuerung im Ausgangssignal in Form von Balken angezeigt. Balken Eins bis Vier stellen Frequenzen von 40 bis 860 Hz dar, Fünf bis Zehn Frequenzen von 860 bis 8,6 kHz und Elf bis Fünfzehn Frequenzen von 8,6 kHz bis 22 kHz.
 Die Encoder sind gleich wie in Menüpunkt Zwei belegt.
 Die Ansteuerung erfolgt über die Encoder nach folgendem Schema:
-\\
-\\
-\\
 \begin{table}[h]
     \centering
     \caption{Encoder Belegung}
@@ -87,11 +87,16 @@ Die Ansteuerung erfolgt über die Encoder nach folgendem Schema:
     \end{tabular}    
 
 \end{table}
-
+\\
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{ITSMenue.jpg}
+  \caption{Menüpunkt Eins bis Drei (v.l.n.r.)}
+\end{figure}
 \newpage
 
 \subsection{Hardware und Schnittstellen}
-Angeschlossen an den Teensy 4.1 ist das Teensy Audioboard SGTL5000 Rev D. 
+Angeschlossen an den Teensy 4.1 ist das Teensy Audioboard SGTL5000 Rev D mit Cinch Ein- und Ausgängen, sowie einer Klinken-Buchse. 
 Für die Anzeige des Menüs wird ein 2,8 Zoll TFT Display (ILI9341) 
 genutzt und es werden vier KY-040 Dreh-Encoder der Marke Joy-It mit dem Micro-Controller verbunden. 
 Für den Aufbau wird eine Lochrasterplatine verwendet. 
@@ -101,20 +106,18 @@ Der SGTL5000 Audioboard ist mit dem Teensy 4.1 über möglichst kurze Kabelverbi
 Die Abtastung erfolgt mit 44100 Samplewerten pro Sekunde und 16 Bit Quantisierungsstufen. 
 Zur Ansteuerung des Chips wird das I2C Protokoll genutzt. 
 Die Clockrates (LRCLK, BCLK \& MCLK) des Chips werden vom Teensy Microcontrollers vorgegeben. 
-MCLK ist für die Synchronisation der internen Prozesse des AD-/DA-Wandlers verantwortlich.  
+MCLK ist für die Synchronisation der internen Prozesse des AD-/DA-Wandlers verantwortlich.
+Das Audiosignal wird über Cinch-Buchsen (Stereo) eingespeist und kann 
+ebenfalls über Cinch-Buchsen (Stereo) oder eine Klinken-Buchse (Stereo) abgenommen werden.
+In untenstehender Tabelle werden die Verbindungen zwischen Teensy 4.1 und Audioboard gezeigt.  
 \paragraph{I2S}
 Die diskreten Audiowerte werden mit dem Protokoll I2S übertragen und zurückgegeben. 
 Im I2S Protokoll werden Channel L und Channel R über jeweils eine Multiplex-Verbindung gesendet oder empfangen. 
 Die BCLK ist hierbei die wortlängenvorgebende Serial Clock und ein Produkt aus Samplerate, Bitrate und Channels. 
 LRCLK gibt vor ob momentan rechter oder linker Channel übertragen werden. 
-Die Übertragung beginnt mit dem MSB und endet mit dem LSB.
 \paragraph{I2C}
 Für die Kommunikation des Teensy 4.1 Mikrocontrollers mit dem Audio Adapter wird I2C genutzt. So wird der Chip kontrolliert und Parameter angepasst. 
 Der Adapter befindet sich hierbei im \glq slave mode\grq{}. Verbunden werden der Microcontroller und der Audio Adapter über SDA und SCL. 
-\\
-\\  
-Die Verbindung von Teensy 4.1 und Audioboard erfolgt nach untenstehender Tabelle:
-
 
 \begin{table}[h]
   \centering
@@ -146,7 +149,6 @@ Fehlerreduktion und Spezifikationen wie z.B. die Displaygröße im Doppel-Duplex
 \\
 \\
 Die Verbindung von Teensy 4.1 und Display erfolgt nach untenstehender Tabelle:
-\\
 \begin{table}[h]
   \centering
   \caption{Display Verbindungen}
@@ -176,7 +178,6 @@ Die Verbindung von Teensy 4.1 und Display erfolgt nach untenstehender Tabelle:
   \end{tabular}    
 
 \end{table}
-
 \subsubsection{KY-040 Encoder}
 Die Encoder werden im Programmcode entprellt. Zusätlich sind sie mit drei Vor-Widerständen von 10 k$\Omega$ vor den Datenleitungen beschaltet.
 Durch gegenläufige Schalter-Verbindungen zwischen den Encoder-Anschlüssen kann erkannt werden, ob der Encoder sich im oder gegen den Uhrzeigersinn dreht.
@@ -199,10 +200,13 @@ Mit der Bibliothek \glq Control.h\grq{} wird die allgemeine Ansteuerung initiali
 und Parameterwerte der Effekte, sowie die Dry/Wet Zusammensetzung am virtuellen Audiomixer werden direkt angepasst.
 \\
 \\
+\\
+\\
 \textbf{Beispiel:}
 \\
 Encoder A beeinflusst die Menü-Auswahl und steht auf dem Case 0. Wird nun der Encoder C gedreht, dann beeinflusst dieser die Dämpfung des Hall-Effektes.
 Steht Enocder A auf dem Case 1, dann beeinflusst Encoder C die Grenzfrequenz des Low-Pass Filters.
+\newpage
 \subsubsection{Display.h}
 Dieser Programmabschnitt enthält die Display Klasse. In dieser werden Funktionen bereitgestellt, um die Änderung an Encoder oder FFT bildlich darzustellen.  
 Wechselt der Nutzer zu einem anderen Menüpunkt oder verändert einen Parameter, dann wird der jeweilige Bildschirmbereich zurückgesetzt und durch den aktuellen ersetzt. 
@@ -219,7 +223,7 @@ Bibliothek weitergegeben. Die Knöpfe der Encoder werden durch die Bounce Librar
 \newpage
 \subsubsection{Shield.h}
 Dieser Teil des Codes ist mithilfe des Teensy Audio System Design Tools generiert.$^{[3]}$ Hier wird das Routing des Eigangssignals durch die verschiedenen Effekte festgelegt. 
-Die FFT-Funktion, der Halleffekt und die Filter wurden aus der Teensy Audio Library entnommen.$^{[4]}$
+Die FFT-Funktion, der Hall-Effekt und die Filter wurden aus der Teensy Audio Library entnommen.$^{[4]}$
 Aus einem Screenshot des Audio System Design Tools wird das im Code erzeugte Routing deutlich:
 \\
 \\
@@ -227,8 +231,8 @@ Aus einem Screenshot des Audio System Design Tools wird das im Code erzeugte Rou
 \\
 \begin{figure}[h]
   \centering
-  \caption{Audio-Routing}
   \includegraphics[width=\textwidth]{AudioDesignTool}
+  \caption{Audio-Routing}
 \end{figure}
 \newpage
 \section{Probleme}
@@ -260,11 +264,15 @@ Für dieses musste ein Ersatzgerät erworben werden.
 
   
 \section{Fazit}
-Trotz einiger Planänderungen ist das Projekt erfolgreich gewesen. Es ist ein funktionstüchtiger Halleffekt mit eingebauter Fast Fourier Transformation
+Trotz einiger Planänderungen ist das Projekt erfolgreich gewesen. Es ist ein funktionstüchtiger Hall-Effekt mit eingebauter Fast Fourier Transformation
 entstanden.
 Da einige Dinge wie das Einbinden von Effekten zum jetzigen Zeitpunkt noch nicht erreicht werden konnten, bietet das Projekt auch nach der IT-Systeme 
 Veranstaltung Möglichkeiten der Weiterarbeit. Zur vorläufigen Vollendung des Projektes ist nun noch ein 3D gedrucktes Gehäuse geplant. 
-Eventuell soll auch eine Akku-Stromversorgung integriert werden.
+Eventuell soll auch eine Akku-Stromversorgung mit Schiebeschalter integriert werden.
 
+\section{Quellen/Tools}
+[1]
+[2]
+[3]
 \end{document}
 \end{justify}
