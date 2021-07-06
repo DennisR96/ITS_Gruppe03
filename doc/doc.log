@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.6.30)  6 JUL 2021 19:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.6.30)  6 JUL 2021 19:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -167,14 +167,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [4]
 
-/Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/doc.tex:58: LaTeX Error: File `' not found.
+/Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/doc.tex:58: LaTeX Error: File `ITS' not found.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.58   \includegraphics[width=\textwidth]{}
-                                           
+l.58   \includegraphics[width=\textwidth]{ITS}
+                                              
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
@@ -330,10 +330,10 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 2701 strings out of 478994
- 41294 string characters out of 5858184
+ 2715 strings out of 478994
+ 41397 string characters out of 5858184
  353770 words of memory out of 5000000
- 20166 multiletter control sequences out of 15000+600000
+ 20167 multiletter control sequences out of 15000+600000
  408598 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,11n,78p,411b,250s stack positions out of 5000i,500n,10000p,200000b,80000s
