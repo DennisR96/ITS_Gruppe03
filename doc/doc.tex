@@ -52,7 +52,11 @@ Es können weiterhin die selben Parameter wie in Menüpunkt Zwei angepasst werde
 \section{Umsetzung}
 Die Umsetzung erfolgt mit Hilfe eines Teensy 4.1 Microcontrollers mit Audioboard, einem Display und vier Dreh-Encodern.
 Für die Umsetzung wurden außerdem die Audio Library des Teensys, das GUI für Teensy Audioanwendungen, die Teensy optimierte ILI9341 Library und das Quadrature Phase Shift Encoding von John Main verwendet auf die später im Text näher eingegangen wird.
-
+\begin{figure}[h]
+  \centering
+  \caption{Links: Gerät Vorderseite. Rechts: Gerät Rückseite}
+  \includegraphics[width=\textwidth]{}
+\end{figure}
 \subsection{GUI}
 Das Userinterface ist in drei Menüpunkte aufgeteilt. Menüpunkt Eins gehört zum Halleffekt. Mittig wird auf dem Bildschirm \glq Reverb\grq{}\: angezeigt. 
 Das untere Drittel des Displays ist in drei Kästen aufgeteilt die von links nach rechts Damping, Dry/Wet und Room und die jeweiligen Werte anzeigen. 
@@ -92,22 +96,25 @@ Für die Anzeige des Menüs wird ein 2,8 Zoll TFT Display (ILI9341)
 genutzt und es werden vier KY-040 Dreh-Encoder der Marke Joy-It mit dem Micro-Controller verbunden. 
 Für den Aufbau wird eine Lochrasterplatine verwendet. 
 
-\subsubsection{Audioboard}
-Der SGTL5000 Audioadapter ist mit dem Teensy 4.1 über möglichst kurze Kabelverbindungen verbunden. 
+\subsubsection{SGTL5000 Audioboard}
+Der SGTL5000 Audioboard ist mit dem Teensy 4.1 über möglichst kurze Kabelverbindungen verbunden. 
 Die Abtastung erfolgt mit 44100 Samplewerten pro Sekunde und 16 Bit Quantisierungsstufen. 
-Zur Ansteuerung des Chips wird das I2C Protokoll, mit dem Adapter im \glq slave mode\grq{}\: genutzt. 
+Zur Ansteuerung des Chips wird das I2C Protokoll genutzt. 
 Die Clockrates (LRCLK, BCLK \& MCLK) des Chips werden vom Teensy Microcontrollers vorgegeben. 
 MCLK ist für die Synchronisation der internen Prozesse des AD-/DA-Wandlers verantwortlich.  
-\subsubsection{I2S}
+\paragraph{I2S}
 Die diskreten Audiowerte werden mit dem Protokoll I2S übertragen und zurückgegeben. 
 Im I2S Protokoll werden Channel L und Channel R über jeweils eine Multiplex-Verbindung gesendet oder empfangen. 
 Die BCLK ist hierbei die wortlängenvorgebende Serial Clock und ein Produkt aus Samplerate, Bitrate und Channels. 
 LRCLK gibt vor ob momentan rechter oder linker Channel übertragen werden. 
 Die Übertragung beginnt mit dem MSB und endet mit dem LSB.
+\paragraph{I2C}
+Für die Kommunikation des Teensy 4.1 Mikrocontrollers mit dem Audio Adapter wird I2C genutzt. So wird der Chip kontrolliert und Parameter angepasst. 
+Der Adapter befindet sich hierbei im \glq slave mode\grq{}. Verbunden werden der Microcontroller und der Audio Adapter über SDA und SCL. 
 \\
 \\  
-Die Verbindung von Teensy 4.1 und Audioadapter erfolgt nach untenstehender Tabelle:
-\\
+Die Verbindung von Teensy 4.1 und Audioboard erfolgt nach untenstehender Tabelle:
+
 
 \begin{table}[h]
   \centering
@@ -131,11 +138,11 @@ Das verwendete Display umfasst 320x240px auf 2,8 Zoll in Farbe und wird mit 5 V 
 Die Touch-Funktion wird in diesem Projekt nicht genutzt.
 Angesteuert wird das Display über das SPI Bus-System.
 
-\subsubsection{SPI}
+\paragraph{SPI}
 Das SPI Bus-System ermöglicht einen synchronen seriellen Datenbus. Hierbei ist das Display im \glq slave mode\grq{}\:.
 Über SCLK wird die Clockrate des Datenbuses definiert. Über \glq MOSI\grq{}\: können sukzessive Infowörter an das Display übermittelt werden, welches 
 seinerseits über \glq MISO\grq{}\: simultan Infowörter an den Teensy zurückgibt. So können Grafik-Daten an das Display übergeben, aber auch Daten zur 
-Fehlerreduktion und Spezifikationen wie z.B. die Display größe im Doppel-Duplex gesendet werden.
+Fehlerreduktion und Spezifikationen wie z.B. die Displaygröße im Doppel-Duplex gesendet werden.
 \\
 \\
 Die Verbindung von Teensy 4.1 und Display erfolgt nach untenstehender Tabelle:
@@ -200,7 +207,7 @@ Steht Enocder A auf dem Case 1, dann beeinflusst Encoder C die Grenzfrequenz des
 Dieser Programmabschnitt enthält die Display Klasse. In dieser werden Funktionen bereitgestellt, um die Änderung an Encoder oder FFT bildlich darzustellen.  
 Wechselt der Nutzer zu einem anderen Menüpunkt oder verändert einen Parameter, dann wird der jeweilige Bildschirmbereich zurückgesetzt und durch den aktuellen ersetzt. 
 Nach diesem Muster funktionieren Menüpunkte, Parameter sowie FFT. Beim Start des Programmes wird ein kleines Intro geladen.
-Wird Menüpunkt Drei aufgerufen, startet die FFT mit 1024 Samplewerten. Somit erzeugt die FFT 511 Frequenzbänder die den jeweiligen Frequenzanteil (0 – 1) enthalten. 
+Wird Menüpunkt Drei aufgerufen, startet die FFT mit 1024 Samplewerten pro Sekunde. Somit erzeugt die FFT 511 Frequenzbänder die den jeweiligen Frequenzanteil (0 – 1) enthalten. 
 Die Werte werden normiert und begrenzt auf die 15 Balken aufgeteilt und vom Display angezeigt. 
 Die Milliseconds-Funktion steuert den Aktualisierungsintervall.  
 Das Display-Layout wurde mit Hilfe der Adafruit ILI9341 Library in der Teensy optimierten Version von Paul Stoffregen erstellt.$^{[1]}$
@@ -256,7 +263,8 @@ Für dieses musste ein Ersatzgerät erworben werden.
 Trotz einiger Planänderungen ist das Projekt erfolgreich gewesen. Es ist ein funktionstüchtiger Halleffekt mit eingebauter Fast Fourier Transformation
 entstanden.
 Da einige Dinge wie das Einbinden von Effekten zum jetzigen Zeitpunkt noch nicht erreicht werden konnten, bietet das Projekt auch nach der IT-Systeme 
-Veranstaltung Möglichkeiten der Weiterarbeit. 
+Veranstaltung Möglichkeiten der Weiterarbeit. Zur vorläufigen Vollendung des Projektes ist nun noch ein 3D gedrucktes Gehäuse geplant. 
+Eventuell soll auch eine Akku-Stromversorgung integriert werden.
 
 \end{document}
 \end{justify}
