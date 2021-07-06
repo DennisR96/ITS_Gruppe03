@@ -6,14 +6,20 @@
 \contentsline {subsection}{\numberline {2.3}Frequenzspektrum (FFT)}{4}{}%
 \contentsline {section}{\numberline {3}Umsetzung}{5}{}%
 \contentsline {subsection}{\numberline {3.1}GUI}{5}{}%
-\contentsline {subsection}{\numberline {3.2}Programmcode}{6}{}%
-\contentsline {subsubsection}{\numberline {3.2.1}main.cpp}{6}{}%
-\contentsline {subsubsection}{\numberline {3.2.2}Control.h}{6}{}%
-\contentsline {subsubsection}{\numberline {3.2.3}Display.h}{6}{}%
-\contentsline {subsubsection}{\numberline {3.2.4}Encoding.h}{7}{}%
-\contentsline {subsubsection}{\numberline {3.2.5}Shield.h}{7}{}%
-\contentsline {section}{\numberline {4}Probleme}{9}{}%
-\contentsline {subsection}{\numberline {4.1}Audio-Board}{9}{}%
-\contentsline {subsection}{\numberline {4.2}Einbinden von Effekten}{9}{}%
-\contentsline {subsection}{\numberline {4.3}Verlust eines Teensy Boards}{9}{}%
-\contentsline {section}{\numberline {5}Fazit}{10}{}%
+\contentsline {subsection}{\numberline {3.2}Hardware und Schnittstellen}{6}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}Audioboard}{6}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}I2S}{6}{}%
+\contentsline {subsubsection}{\numberline {3.2.3}ILI9341 TFT-Display}{7}{}%
+\contentsline {subsubsection}{\numberline {3.2.4}SPI}{7}{}%
+\contentsline {subsubsection}{\numberline {3.2.5}KY-040 Encoder}{7}{}%
+\contentsline {subsection}{\numberline {3.3}Programmcode}{8}{}%
+\contentsline {subsubsection}{\numberline {3.3.1}main.cpp}{8}{}%
+\contentsline {subsubsection}{\numberline {3.3.2}Control.h}{8}{}%
+\contentsline {subsubsection}{\numberline {3.3.3}Display.h}{9}{}%
+\contentsline {subsubsection}{\numberline {3.3.4}Encoding.h}{9}{}%
+\contentsline {subsubsection}{\numberline {3.3.5}Shield.h}{10}{}%
+\contentsline {section}{\numberline {4}Probleme}{11}{}%
+\contentsline {subsection}{\numberline {4.1}Audio-Board}{11}{}%
+\contentsline {subsection}{\numberline {4.2}Einbinden von Effekten}{11}{}%
+\contentsline {subsection}{\numberline {4.3}Verlust eines Teensy Boards}{11}{}%
+\contentsline {section}{\numberline {5}Fazit}{12}{}%

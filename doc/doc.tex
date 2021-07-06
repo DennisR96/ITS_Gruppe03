@@ -32,34 +32,33 @@ Die variablen Grenzfrequenzen sind auch während Darstellung des Frequenzspektru
 Der bandbegrenzte Hallanteil im Ausgangssignal lässt sich über Dry/Wet Kontrollieren.
 \section{Funktionen}
 Die realisierten Funktionen umfassen einen Halleffekt, Low-/High-Cut und ein visualisiertes Frequenzspektrum des manipulierten Signals. 
-Die Funktionen werden als einzelne Menüpunkte dargestellt und können mit Hilfe des Encoders Eins durchblättert werden. 
-Encoder Zwei bis Vier steuern die Effekt- und Filterparameter, die per Knopfdruck auf ihren Ursprungswert zurücksetzbar sind.
+Die Funktionen werden als einzelne Menüpunkte dargestellt und können mit Hilfe des Encoders A durchblättert werden. 
+Encoder B, C und D steuern die Effekt- und Filterparameter, die per Knopfdruck auf ihren Ursprungswert zurücksetzbar sind.
 \subsection{Halleffekt}
 Der Halleffekt wird nach Start als Menüpunkt Eins angezeigt. 
-Hier lassen sich die Parameter Room und Damping, mit Encoder Zwei und Vier anpassen. 
-Zusätzlich kann der bandbegrenzte Hallanteil im Ausgangssignal mit Dry/Wet über Encoder Drei kontrolliert werden.
+Hier lassen sich die Parameter Room und Damping, mit Encoder B und D anpassen. 
+Zusätzlich kann der bandbegrenzte Hallanteil im Ausgangssignal mit Dry/Wet über Encoder C kontrolliert werden.
 \subsection{Low-/High-Cut}
 Low- und High-Cut sind im Routing hinter dem Halleffekt angesiedelt und werden im Menü als zweites dargestellt. 
 Das verhallte Signal wird automatisch bandbegrenzt. 
 Die Start-Grenzfrequenz des Low-Cuts beträgt 400 Hz, die des High-Cuts 12kHz. 
-Mit Encoder Zwei und Vier können in diesem Menüpunkt die Grenzfrequenzen verschoben werden. 
-Mit Encoder Drei lässt sich weiterhin der bandbegrenzte Hallanteil im Ausganssignal kontrollieren. 
+Mit Encoder B und D können in diesem Menüpunkt die Grenzfrequenzen verschoben werden. 
+Mit Encoder C lässt sich weiterhin der bandbegrenzte Hallanteil im Ausganssignal kontrollieren. 
 \subsection{Frequenzspektrum (FFT)}
 Menüpunkt Drei ist eine Darstellung des Ausgangssignals im Frequenzbereich. 
 Der hörbare Frequenzbereich wird in 15 Balken aufgeteilt. Die Aufteilung orientiert sich an dem Hörverhalten des Menschen. 
 Daher sind hohe Frequenzen breiter zusammengefasst als tiefe. 
 Balken Eins bis Vier stellen Frequenzen von 40 bis 860 Hz dar, Fünf bis Zehn Frequenzen von 860 bis 8,6 kHz und Elf bis Fünfzehn Frequenzen von 8,6 kHz bis 22 kHz.
-Encoder Zwei bis Vier sind auf dieselbe Weise belegt wie in Menüpunkt Zwei.
+Encoder B, C und D sind auf dieselbe Weise belegt wie in Menüpunkt Zwei.
 \newpage
 \section{Umsetzung}
-Die Umsetzung erfolgt mit Hilfe eines Teensy 4.1 Micro-Controllers. 
-Angeschlossen ist außerdem das speziell für den Teensy 4.1 entwickelte Audioboard SGTL5000. 
-Für die Anzeige des Menüs wird ein 2.8 Zoll TFT Display (ILI9341) genutzt und es werden vier KY-040 Dreh-Encoder der Marke Joy-It mit dem Micro-Controller verbunden. 
-Für den Aufbau wird eine Lochrasterplatine verwendet.
+Die Umsetzung erfolgt mit Hilfe eines Teensy 4.1 Microcontrollers mit Audioboard, einem Display und vier Dreh-Encodern.
+Für die Umsetzung wurden außerdem die Audio Library des Teensys, das GUI für Teensy Audioanwendungen, die Teensy optimierte ILI9341 Library und das Quadrature Phase Shift Encoding von John Main verwendet auf die später im Text näher eingegangen wird.
+
 \subsection{GUI}
-Das Userinterface ist in drei Menüpunkte aufgeteilt. Menüpunkt Eins gehört zum Halleffekt. Mittig wird Reverb angezeigt. 
+Das Userinterface ist in drei Menüpunkte aufgeteilt. Menüpunkt Eins gehört zum Halleffekt. Mittig wird auf dem Bildschirm \glq Reverb\grq{}\: angezeigt. 
 Das untere Drittel des Displays ist in drei Kästen aufgeteilt die von links nach rechts Damping, Dry/Wet und Room und die jeweiligen Werte anzeigen. 
-Damping und Room werden von 0 – 100, Dry/Wet von 0\% - 100\% angezeigt. Der Aufbau von Menüpunkt Zwei ist gleich. 
+Damping und Room werden von 0 – 100, Dry/Wet von 0\% - 100\% angezeigt. Der Aufbau von Menüpunkt Zwei ist gleich, Mittig wird \glq Filter\grq{}\: angezeigt. 
 Die Parameter umfassen von links nach rechts Low-Cut, Dry/Wet und High-Cut. Low-Cut läuft zwischen 400 Hz und 12 kHz, High-Cut zwischen 12 kHz und 1,2 kHz, in einer Schrittweite von 100 Hz. 
 Menüpunkt Drei zeigt die Frequenzanalyse an. Hier werden 15 Frequenzbänder mit ihrer momentanen Aussteuerung im Ausgangssignal angezeigt. Die Encoder sind gleich wie in Menüpunkt Zwei belegt.
 Die Ansteuerung erfolgt über die Encoder nach folgendem Schema:
@@ -73,13 +72,13 @@ Die Ansteuerung erfolgt über die Encoder nach folgendem Schema:
     \begin{tabular}{l|l|l}
       \textbf{Encoder}  & \textbf{Funktion Hall} & \textbf{Funktion Filter/FFT}\\
       \hline
-      1 & Menü & Menü \\
+      A & Menü & Menü \\
    
-      2 & Damping & Low-Cut \\
+      B & Damping & Low-Cut \\
    
-      3 & Dry/Wet & Dry/Wet \\
+      C & Dry/Wet & Dry/Wet \\
       
-      4 & Room & High-Cut \\
+      D & Room & High-Cut \\
      
 
     \end{tabular}    
@@ -87,6 +86,97 @@ Die Ansteuerung erfolgt über die Encoder nach folgendem Schema:
 \end{table}
 
 \newpage
+
+\subsection{Hardware und Schnittstellen}
+Angeschlossen an den Teensy 4.1 ist das Teensy Audioboard SGTL5000 Rev D. 
+Für die Anzeige des Menüs wird ein 2,8 Zoll TFT Display (ILI9341) 
+genutzt und es werden vier KY-040 Dreh-Encoder der Marke Joy-It mit dem Micro-Controller verbunden. 
+Für den Aufbau wird eine Lochrasterplatine verwendet. 
+
+\subsubsection{Audioboard}
+Der SGTL5000 Audioadapter ist mit dem Teensy 4.1 über möglichst kurze Kabelverbindungen verbunden. 
+Die Abtastung erfolgt mit 44100 Samplewerten pro Sekunde und 16 Bit Quantisierungsstufen. 
+Zur Ansteuerung des Chips wird das I2C Protokoll, mit dem Adapter im \glq slave mode\grq{}\: genutzt. 
+Die Clockrates (LRCLK, BCLK \& MCLK) des Chips werden vom Teensy Microcontrollers vorgegeben. 
+MCLK ist für die Synchronisation der internen Prozesse des AD-/DA-Wandlers verantwortlich.  
+\subsubsection{I2S}
+Die diskreten Audiowerte werden mit dem Protokoll I2S übertragen und zurückgegeben. 
+Im I2S Protokoll werden Channel L und Channel R über jeweils eine Multiplex-Verbindung gesendet oder empfangen. 
+Die BCLK ist hierbei die wortlängenvorgebende Serial Clock und ein Produkt aus Samplerate, Bitrate und Channels. 
+LRCLK gibt vor ob momentan rechter oder linker Channel übertragen werden. 
+Die Übertragung beginnt mit dem MSB und endet mit dem LSB.
+\\
+\\  
+Die Verbindung von Teensy 4.1 und Audioadapter erfolgt nach untenstehender Tabelle:
+\\
+
+\begin{table}[h]
+  \centering
+  \caption{Audioboard Verbindungen}
+  \label{tbl:audioboardverbindungen}
+  \begin{tabular}{l|l}
+    \textbf{Audioboard Pin}  & \textbf{Teensy 4.1 Pins}\\
+    \hline
+    Audio Data & 7, 8, 20, 21, 23\\
+ 
+    Audio Control	 & 18, 19\\
+ 
+   
+
+  \end{tabular}    
+
+\end{table}
+
+\subsubsection{ILI9341 TFT-Display}
+Das verwendete Display umfasst 320x240px auf 2,8 Zoll in Farbe und wird mit 5 V versorgt.
+Die Touch-Funktion wird in diesem Projekt nicht genutzt.
+Angesteuert wird das Display über das SPI Bus-System.
+
+\subsubsection{SPI}
+Das SPI Bus-System ermöglicht einen synchronen seriellen Datenbus. Hierbei ist das Display im \glq slave mode\grq{}\:.
+Über SCLK wird die Clockrate des Datenbuses definiert. Über \glq MOSI\grq{}\: können sukzessive Infowörter an das Display übermittelt werden, welches 
+seinerseits über \glq MISO\grq{}\: simultan Infowörter an den Teensy zurückgibt. So können Grafik-Daten an das Display übergeben, aber auch Daten zur 
+Fehlerreduktion und Spezifikationen wie z.B. die Display größe im Doppel-Duplex gesendet werden.
+\\
+\\
+Die Verbindung von Teensy 4.1 und Display erfolgt nach untenstehender Tabelle:
+\\
+\begin{table}[h]
+  \centering
+  \caption{Display Verbindungen}
+  \label{tbl:displayverbindungen}
+  \begin{tabular}{l|l}
+    \textbf{Display Pin}  & \textbf{Teensy 4.1 Pins}\\
+    \hline
+    VCC & 5 V\\
+ 
+    GND	 & GND\\
+ 
+    CS	 & 10\\
+
+    Reset	 & 3,3 V\\
+
+    D/C	 & 9\\
+
+    MOSI	 & 11\\
+
+    SCK	 & 13\\
+
+    LED	 & 5 V (mit 100 $\Omega$)\\
+
+    MISO	 & 12\\
+   
+
+  \end{tabular}    
+
+\end{table}
+
+\subsubsection{KY-040 Encoder}
+Die Encoder werden im Programmcode entprellt. Zusätlich sind sie mit drei Vor-Widerständen von 10 k$\Omega$ vor den Datenleitungen beschaltet.
+Durch gegenläufige Schalter-Verbindungen zwischen den Encoder-Anschlüssen kann erkannt werden, ob der Encoder sich im oder gegen den Uhrzeigersinn dreht.
+Zudem kann über Knopfdruck der Zustand der Schalter-Verbindungen umgekehrt und somit als Impuls am Microcontroller wahrgenommen werden.
+Durch die Funktionsweise sind die erzeugten Encoder-Daten im Gray-Mapping Schema. Dadurch wird eine höhere Fehlerresistenz erzielt.
+Die Encoder werden mit 3,3 V versorgt.
 
 \subsection{Programmcode}
 Der Teensy 4.1 übernimmt mit seiner hohen Rechenleistung die Steuerung aller Funktionen. 
@@ -96,10 +186,10 @@ Auch die FFT wird vom Teensy durchgeführt und zur Visualisierung an das Display
 \subsubsection{main.cpp}
 Die main ist das Herzstück des Programmcodes. Im Setup werden zuerst die Enocder initialisiert und anschließend das Display. 
 Außerdem werden Audio-Board sowie zugehörige Effekte aktiviert. 
-Durch die \glq encoder update\grq{} - Funktion wird innerhalb der Loop Funktion auf Änderungen im Status der Encoder gewartet.
+Durch die \glq encoder update\grq{}\:- Funktion wird innerhalb der Loop Funktion auf Änderungen im Status der Encoder gewartet.
 \subsubsection{Control.h}
 Mit der Bibliothek \glq Control.h\grq{} wird die allgemeine Ansteuerung initialisiert. 
-Über Switch-Cases wird je nach Status des Encoders eine Menü-Variable und damit einer der drei Menüpunkte angewählt. Diese Information wird an \glq Display.h\grq{}   übergeben 
+Über Switch-Cases wird je nach Status des Encoders eine Menü-Variable und damit einer der drei Menüpunkte angewählt. Diese Information wird an \glq Display.h\grq{}\:übergeben 
 und Parameterwerte der Effekte, sowie die Dry/Wet Zusammensetzung am virtuellen Audiomixer werden direkt angepasst.
 \\
 \\
@@ -111,21 +201,29 @@ Steht Enocder A auf dem Case 1, dann beeinflusst Encoder C die Grenzfrequenz des
 Dieser Programmabschnitt enthält die Display Klasse. In dieser werden Funktionen bereitgestellt, um die Änderung an Encoder oder FFT bildlich darzustellen.  
 Wechselt der Nutzer zu einem anderen Menüpunkt oder verändert einen Parameter, dann wird der jeweilige Bildschirmbereich zurückgesetzt und durch den aktuellen ersetzt. 
 Nach diesem Muster funktionieren Menüpunkte, Parameter sowie FFT. Beim Start des Programmes wird ein kleines Intro geladen.
-Wird Menüpunkt Drei aufgerufen, startet die FFT mit 1024 Samplewerten. Die FFT erzeugt 511 Frequenzbänder die den jeweiligen Frequenzanteil (0 – 1) enthalten. 
+Wird Menüpunkt Drei aufgerufen, startet die FFT mit 1024 Samplewerten. Somit erzeugt die FFT 511 Frequenzbänder die den jeweiligen Frequenzanteil (0 – 1) enthalten. 
 Die Werte werden normiert und begrenzt auf die 15 Balken aufgeteilt und vom Display angezeigt. 
 Die Milliseconds-Funktion steuert den Aktualisierungsintervall.  
-Die FFT, Halleffekt und die Filter wurden aus der Teensy Audio Library entnommen.$^{[1]}$
+Das Display-Layout wurde mit Hilfe der Adafruit ILI9341 Library in der Teensy optimierten Version von Paul Stoffregen erstellt.$^{[1]}$
 \subsubsection{Encoding.h}
 Die Encoding Bibliothek ist einer der wichtigsten Teile des Codes, da eine Bedienung ohne funktionierende Encoder nicht möglich ist. Um akkurate Veränderung am Encoder wahrzunehmen, 
-müssen diese Entprellt werden. Bei der Wahl einer geeigneten Entprellung zeigte das Quadrature Phase Shift Encoding von John Main gute Ergebnisse. Mit hoher Genauigkeit lassen sich 
+müssen diese Entprellt werden. Bei der Wahl einer geeigneten Entprellung zeigte das Quadrature Phase Shift Encoding$^{[2]}$ von John Main gute Ergebnisse. Mit hoher Genauigkeit lassen sich 
 kleine Veränderung am Encoder als +1 oder -1 wahrnehmen. Über die im Loop eingebettete encoder update Funktion wird eine Änderung am Encoder erkannt und in Form einer In- oder Decrementation an die Control 
 Bibliothek weitergegeben. Die Knöpfe der Encoder werden durch die Bounce Library entprellt und ebenfalls über die Update Funktion überwacht.   
+\newpage
 \subsubsection{Shield.h}
-Dieser Teil des Codes ist mithilfe des Teensy Audio System Design Tools generiert. Hier wird das Routing des Eigangssignals durch die verschiedenen Effekte festgelegt 
+Dieser Teil des Codes ist mithilfe des Teensy Audio System Design Tools generiert.$^{[3]}$ Hier wird das Routing des Eigangssignals durch die verschiedenen Effekte festgelegt. 
+Die FFT-Funktion, der Halleffekt und die Filter wurden aus der Teensy Audio Library entnommen.$^{[4]}$
 Aus einem Screenshot des Audio System Design Tools wird das im Code erzeugte Routing deutlich:
 \\
-\includegraphics[width=\textwidth]{AudioDesignTool}
-
+\\
+\\
+\\
+\begin{figure}[h]
+  \centering
+  \caption{Audio-Routing}
+  \includegraphics[width=\textwidth]{AudioDesignTool}
+\end{figure}
 \newpage
 \section{Probleme}
 In diesem Abschnitt werden die Hindernisse und Probleme bei der Realisation des Projektes beschreiben.
@@ -158,9 +256,8 @@ Für dieses musste ein Ersatzgerät erworben werden.
 \section{Fazit}
 Trotz einiger Planänderungen ist das Projekt erfolgreich gewesen. Es ist ein funktionstüchtiger Halleffekt mit eingebauter Fast Fourier Transformation
 entstanden.
-Da einige Dinge wie das Einbinden von Effekten zum jetzigen Zeitpunkt noch nicht erreicht werden konnte, bietet das Projekt auch nach der IT-Systeme 
-Veranstaltung Möglichkeiten der Weiterarbeit.  
-
+Da einige Dinge wie das Einbinden von Effekten zum jetzigen Zeitpunkt noch nicht erreicht werden konnten, bietet das Projekt auch nach der IT-Systeme 
+Veranstaltung Möglichkeiten der Weiterarbeit. 
 
 \end{document}
 \end{justify}
