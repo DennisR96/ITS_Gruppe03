@@ -168,6 +168,7 @@ INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
 OUTPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/doc.toc
+INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//ITS_KomplettesGeraet.jpg
 INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//ITS_KomplettesGeraet.jpg
@@ -183,7 +184,6 @@ INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images
 INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//AudioDesignTool.png
 INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//AudioDesignTool.png
 INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/./images//AudioDesignTool.png
-INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
 INPUT /Users/hamburgstartups/Desktop/ITS/ITS Gruppe 03/ITS_Gruppe03/doc/doc.aux
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
