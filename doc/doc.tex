@@ -118,7 +118,7 @@ Die BCLK ist hierbei die wortlängenvorgebende Serial Clock und ein Produkt aus 
 LRCLK gibt vor ob momentan rechter oder linker Channel übertragen werden. 
 \paragraph{I2C}
 Für die Kommunikation des Teensy 4.1 Mikrocontrollers mit dem Audio Adapter wird I2C genutzt. So wird der Chip kontrolliert und Parameter angepasst. 
-Der Adapter befindet sich hierbei im \glq slave mode\grq{}. Verbunden werden der Microcontroller und der Audio Adapter über SDA und SCL. 
+Der Adapter befindet sich hierbei im \glq secondary mode\grq{}. Verbunden werden der Microcontroller und der Audio Adapter über SDA und SCL. 
 
 \begin{table}[h]
   \centering
@@ -143,7 +143,7 @@ Die Touch-Funktion wird in diesem Projekt nicht genutzt.
 Angesteuert wird das Display über das SPI Bus-System.
 
 \paragraph{SPI}
-Das SPI Bus-System ermöglicht einen synchronen seriellen Datenbus. Hierbei ist das Display im \glq slave mode\grq{}\:.
+Das SPI Bus-System ermöglicht einen synchronen seriellen Datenbus. Hierbei ist das Display im \glq secondary mode\grq{}\:.
 Über SCLK wird die Clockrate des Datenbuses definiert. Über \glq MOSI\grq{}\: können sukzessive Infowörter an das Display übermittelt werden, welches 
 seinerseits über \glq MISO\grq{}\: simultan Infowörter an den Teensy zurückgibt. So können Grafik-Daten an das Display übergeben, aber auch Daten zur 
 Fehlerreduktion und Spezifikationen wie z.B. die Displaygröße im Doppel-Duplex gesendet werden.
